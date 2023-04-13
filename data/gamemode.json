@@ -1,0 +1,124 @@
+{
+  "$schema": "https://test.melvoridle.com/dlcPrep/assets/schema/gameData.json",
+  "namespace": "conquest",
+  "data": {
+    "gamemodes": [
+      {
+        "id": "conquest_speedrun",
+        "name": "Conquest Speedrun",
+        "media": "assets/conquest_icon.png",
+        "rules": [
+          "Conquest Mode Rules",
+          "Reduced attack intervals for you and enemies",
+          "Double Exp, Reduced monster respawn time.",
+          "5x Gold from Combat, 3x Slayer Coins"
+        ],
+        "textClass": "text-warning",
+        "btnClass": "btn-gamemode-normal",
+        "isPermaDeath": false,
+        "isEvent": false,
+        "endDate": 0,
+        "combatTriangle": "Standard",
+        "hitpointMultiplier": 10,
+        "hasRegen": true,
+        "capNonCombatSkillLevels": true,
+        "startingPage": "melvorD:Bank",
+        "startingItems": [
+          {
+            "id": "melvorD:Bronze_Dagger",
+            "quantity": 1
+          },
+          {
+            "id": "melvorD:Shrimp",
+            "quantity": 10
+          }
+        ],
+        "startingGP": 0,
+        "allowSkillUnlock": true,
+        "startingSkills": [
+          "melvorD:Attack",
+          "melvorD:Strength",
+          "melvorD:Defence",
+          "melvorD:Hitpoints"
+        ],
+        "skillUnlockCost": [
+          10000,
+          20000,
+          50000,
+          200000,
+          10000000
+        ],
+        "playerModifiers": {
+          "decreasedAttackIntervalPercent": 50,
+          "decreasedMonsterRespawnTimer": 2000,
+          "decreasedGlobalSkillIntervalPercent": 50,
+          "decreasedThievingStunIntervalPercent": 50,
+          "increasedGPFromMonsters": 400,
+          "increasedSlayerCoins": 200
+        },
+        "enemyModifiers": {
+          "decreasedAttackIntervalPercent": 50
+        },
+        "hasTutorial": false
+      },
+      {
+        "id": "conquest_speedrunHC",
+        "name": "Hardcore Conquest Speedrun",
+        "media": "assets/conquest_icon.png",
+        "rules": [
+          "Conquest Mode Rules",
+          "Reduced attack intervals for you and enemies",
+          "Double Exp, Reduced monster respawn time.",
+          "5x Gold from Combat, 3x Slayer Coins"
+        ],
+        "textClass": "text-warning",
+        "btnClass": "btn-gamemode-hardcore",
+        "isPermaDeath": true,
+        "isEvent": false,
+        "endDate": 0,
+        "combatTriangle": "Hardcore",
+        "hitpointMultiplier": 10,
+        "hasRegen": false,
+        "capNonCombatSkillLevels": true,
+        "startingPage": "melvorD:Bank",
+        "startingItems": [
+          {
+            "id": "melvorD:Bronze_Dagger",
+            "quantity": 1
+          },
+          {
+            "id": "melvorD:Shrimp",
+            "quantity": 10
+          }
+        ],
+        "startingGP": 0,
+        "allowSkillUnlock": true,
+        "startingSkills": [
+          "melvorD:Attack",
+          "melvorD:Strength",
+          "melvorD:Defence",
+          "melvorD:Hitpoints"
+        ],
+        "skillUnlockCost": [
+          10000,
+          20000,
+          50000,
+          200000,
+          10000000
+        ],
+        "playerModifiers": {
+          "decreasedAttackIntervalPercent": 50,
+          "decreasedMonsterRespawnTimer": 2000,
+          "decreasedGlobalSkillIntervalPercent": 80,
+          "decreasedThievingStunIntervalPercent": 80,
+          "increasedGPFromMonsters": 400,
+          "increasedSlayerCoins": 200
+        },
+        "enemyModifiers": {
+          "decreasedAttackIntervalPercent": 50
+        },
+        "hasTutorial": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "namespace": "conquest_gamemodes",
+  "setup": "setup.mjs",
+  "load": ["templates.html", "styles.css", "data/gamemode.json", "data/monsters.json"],
+  "icon": "assets/conquest_icon.png"
+}

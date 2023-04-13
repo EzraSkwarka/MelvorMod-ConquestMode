@@ -1,0 +1,75 @@
+{
+    "$schema": "https://test.melvoridle.com/dlcPrep/assets/schema/gameData.json",
+    "namespace": "conquest",
+    "data": {
+        "monsters": [
+            {
+                "id": "treasured_golbin",
+                "name": "Treasured Golbin",
+                "media": "assets/monsters/Golden_Golbin_(pet).svg",
+                "levels": {
+                    "Hitpoints": 20,
+                    "Attack": 10,
+                    "Strength": 10,
+                    "Defence": 10,
+                    "Ranged": 1,
+                    "Magic": 1
+                },
+                "equipmentStats": [
+                    {
+                        "key": "attackSpeed",
+                        "value": 3600
+                    }
+                ],
+                "ignoreCompletion": false,
+                "attackType": "magic",
+                "specialAttacks": [],
+                "passives": [],
+                "lootChance": 100,
+                "lootTable": [
+                    {
+                        "itemID": "melvorD:Mastery_Token_Farming",
+                        "minQuantity": 5,
+                        "maxQuantity": 10,
+                        "weight": 36
+                    },
+                    {
+                        "itemID": "melvorD:Mastery_Token_Firemaking",
+                        "minQuantity": 5,
+                        "maxQuantity": 10,
+                        "weight": 18
+                    },
+                    {
+                        "itemID": "melvorD:Mastery_Token_Woodcutting",
+                        "minQuantity": 5,
+                        "maxQuantity": 10,
+                        "weight": 18
+                    },
+                    {
+                        "itemID": "melvorD:Mastery_Token_Fishing",
+                        "minQuantity": 5,
+                        "maxQuantity": 10,
+                        "weight": 37
+                    },
+                    {
+                        "itemID": "melvorD:Mastery_Token_Mining",
+                        "minQuantity": 5,
+                        "maxQuantity": 10,
+                        "weight": 21
+                    }
+                ],
+                "gpDrops": {
+                    "min": 50,
+                    "max": 200
+                },
+                "canSlayer": true,
+                "isBoss": false,
+                "selectedSpell": "melvorD:FireBolt",
+                "bones": {
+                    "itemID": "melvorD:Magic_Bones",
+                    "quantity": 1
+                }
+            }
+        ]
+    }
+}
