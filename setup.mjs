@@ -272,27 +272,25 @@ export async function setup(ctx) {
 //Helper functions for hiding skills
 function toggleLockedSkills() {
   let chatter = false;
+  let ToTH_Count = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald"))
+  let Impending_Darkness_Count = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID("melvorF:Impending_Darkness"))
+  let Volcanic_Cave_Count = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID("melvorD:Volcanic_Cave"))
+
   function toggleLogic(categoryItems) {
     categoryItems.forEach((item) => {
       if (forbidden_skills.includes(item.id)) {
         if (chatter) console.log("Lock Forbidden Skill: " + item.id)
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
-      } else if (forbidden_skills_Throne_of_the_Herald.includes(item.id) && (game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald")
-      ) < 1)) {
+      } else if (forbidden_skills_Throne_of_the_Herald.includes(item.id) && (ToTH_Count >= 1)) {
         if (chatter) console.log("Lock ToTH Skill: " + item.id)
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
-      } else if (forbidden_skills_Impending_Darkness.includes(item.id) && (game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorF:Impending_Darkness")
-      ) < 1)) {
+      } else if (forbidden_skills_Impending_Darkness.includes(item.id) && (Impending_Darkness_Count >= 1)) {
         if (chatter) console.log("Lock ID Skill: " + item.id)
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
-      } else if (forbidden_skills_Volcanic_Cave.includes(item.id) && (game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorD:Volcanic_Cave")
-      ) < 1)) {
+      } else if (forbidden_skills_Volcanic_Cave.includes(item.id) && (Volcanic_Cave_Count >= 1)) {
         if (chatter) console.log("Lock Volcanic Cave Skill: " + item.id)
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
