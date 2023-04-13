@@ -8,7 +8,7 @@
                 "name": "Treasured Golbin",
                 "media": "assets/monsters/Golden_Golbin_(pet).svg",
                 "levels": {
-                    "Hitpoints": 20,
+                    "Hitpoints": 100,
                     "Attack": 60,
                     "Strength": 60,
                     "Defence": 60,
