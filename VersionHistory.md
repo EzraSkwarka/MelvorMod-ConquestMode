@@ -1,6 +1,6 @@
 V0.9.7
 - Added Treasured Golbin
-  - Spoiler
+  - Spoiler in planning document
 - Fixed logic for ToggleLockedSkills
 - Hid Forbidden Skill pets in various dungeons
  - See the Planning Doc for spoilers

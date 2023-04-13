@@ -9,11 +9,11 @@
                 "media": "assets/monsters/Golden_Golbin_(pet).svg",
                 "levels": {
                     "Hitpoints": 20,
-                    "Attack": 10,
-                    "Strength": 10,
-                    "Defence": 10,
-                    "Ranged": 1,
-                    "Magic": 1
+                    "Attack": 60,
+                    "Strength": 60,
+                    "Defence": 60,
+                    "Ranged": 60,
+                    "Magic": 60
                 },
                 "equipmentStats": [
                     {
@@ -64,7 +64,7 @@
                 },
                 "canSlayer": true,
                 "isBoss": false,
-                "selectedSpell": "melvorD:FireBolt",
+                "selectedSpell": "melvorD:FireBlast",
                 "bones": {
                     "itemID": "melvorD:Magic_Bones",
                     "quantity": 1
