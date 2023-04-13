@@ -41,10 +41,8 @@ export async function setup(ctx) {
       game.firemaking.setXP(exp.level_to_xp(120) + 1);
     if (game.woodcutting.level < 120)
       game.woodcutting.setXP(exp.level_to_xp(120) + 1);
-    if (game.fishing.level < 120)
-      game.fishing.setXP(exp.level_to_xp(120) + 1);
-    if (game.mining.level < 120)
-      game.mining.setXP(exp.level_to_xp(120) + 1);
+    if (game.fishing.level < 120) game.fishing.setXP(exp.level_to_xp(120) + 1);
+    if (game.mining.level < 120) game.mining.setXP(exp.level_to_xp(120) + 1);
     if (game.firemaking.level < 120)
       game.farming.setXP(exp.level_to_xp(120) + 1); //could be in a loop i guess?
   };
@@ -74,14 +72,11 @@ export async function setup(ctx) {
   //Fires After an enemy is killed
   ctx.patch(CombatManager, "onEnemyDeath").after(function () {
     if (!conquestGamemodeCheck()) return;
-    //Award Marks here
-    //  // console.log("Jobs done: " + this.enemy.monster.id);
-    //  // if (this.enemy.monster.id == "melvorD:Plant") {
-    //  //   console.log("Dead plant");
-    // // }
-
     //Refresh Locked Skills
     toggleLockedSkills();
+    //Pet and Mark check
+    markCheck(this.enemy.monster.id);
+    petCheck(this.enemy.monster.id);
   });
 
   //Adds pre-ID level caps, Dont know why it needs to be out here to work?
@@ -189,6 +184,11 @@ export async function setup(ctx) {
     if (game.currentGamemode.id.includes("conquest")) {
       return [amount * 2, masteryAction];
     }
+  });
+
+  //After Stealing from NPC:
+  ctx.patch(Thieving, "postAction").after(function () {
+    markCheck(this.currentNPC.id);
   });
 
   /****************************************************/
@@ -371,3 +371,68 @@ function toggleLockedSkills() {
       .items()
   );
 }
+
+//Conquest Summon Mark Checks
+const markCheck = (enemyID) => {
+  let random = Math.random();
+  let markID = false;
+
+  switch (true) {
+    case "melvorD:Plant":
+      // console.log("Dead Plant")
+      break;
+    case enemyID == "melvorD:Tentacle" && random <= 0.001:
+      markID = "melvorF:Octopus";
+      break;
+    case enemyID == "melvorF:FierceDevil" && random <= 0.001:
+      markID = "melvorF:Devil";
+      break;
+    case enemyID == "melvorF:SeethingHornedElite" && random <= 0.001:
+      let beatID = game.combat.getDungeonCompleteCount(
+        game.dungeons.getObjectByID("melvorF:Impending_Darkness")
+      );
+      if (beatID >= 1) markID = "melvorF:Devil";
+      break;
+    case enemyID == "melvorF:MINER" && random <= 0.00005:
+      markID = "melvorF:Mole";
+      break;
+    case enemyID == "melvorF:LUMBERJACK" && random <= 0.00005:
+      markID = "melvorF:Ent";
+      break;
+  }
+
+  if (markID != false)
+    game.summoning.discoverMark(game.summoning.actions.getObjectByID(markID));
+};
+
+//Conquest Pet Checks
+const petCheck = (enemyID) => {
+  let random = Math.random();
+  let petDropRate = 0.002857; //1/350-ish
+  let petID = false;
+
+  switch (true) {
+    case enemyID == "melvorD:TheKraken" && random <= petDropRate:
+      petID = "melvorD:PuddingDuckie";
+      break;
+    case enemyID == "melvorD:SpiderKing" && random <= petDropRate:
+      petID = "melvorD:Beavis";
+      break;
+    case enemyID == "melvorF:MalcsTheLeaderOfDragons" && random <= petDropRate:
+      petID = "melvorD:Pyro";
+      break;
+    case enemyID == "melvorF:MioliteMonarch" && random <= petDropRate:
+      petID = "melvorD:CoolRock";
+      break;
+    case enemyID == "melvorD:MummaChicken" && random <= petDropRate:
+      petID = "melvorD:LarryTheLonelyLizard";
+      break;
+    case enemyID == "melvorD:ProtectorofIce" && random <= petDropRate:
+      petID = "melvorF:Astro";
+      break;
+    // default:
+    //   console.log("Killed: " + enemyID);
+  }
+
+  if (petID != false) game.petManager.unlockPetByID(petID);
+};

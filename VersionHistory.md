@@ -2,6 +2,10 @@ V0.9.7
 - Added Treasured Golbin
   - Spoiler
 - Fixed logic for ToggleLockedSkills
+- Hid Forbidden Skill pets in various dungeons
+ - See the Planning Doc for spoilers
+- Hid Forbidden Skill summoning marks in various places
+ - See the Planning Doc for spoilers
 
 V0.9.6b
 - Reduced interval reduction percent to 50% (for both  player and enemeys)
