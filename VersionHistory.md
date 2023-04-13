@@ -1,3 +1,8 @@
+V0.9.7
+- Added Treasured Golbin
+  - Spoiler
+- Fixed logic for ToggleLockedSkills
+
 V0.9.6b
 - Reduced interval reduction percent to 50% (for both  player and enemeys)
 - Fixed problem with Agility

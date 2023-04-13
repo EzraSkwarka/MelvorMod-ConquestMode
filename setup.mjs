@@ -29,8 +29,6 @@ export async function setup(ctx) {
   const gamemodeJSON = await ctx.loadData("data/gamemode.json");
   const monstersJSON = await ctx.loadData("data/monsters.json");
 
-  const maxCapeJSONData = await ctx.loadData('data/mini_max_capes.json')
-
 
 
   // Helper patch functions
@@ -57,28 +55,18 @@ export async function setup(ctx) {
 
   ctx.onInterfaceReady((ctx) => {
     if (!conquestGamemodeCheck()) { return }
-    //Skill view toggle, modified from tibalt-io's Hide Locked Skills
-    toggleLockedSkills(
-      sidebar
-        .categories()
-        .find((c) => c.id === "Non-Combat")
-        .items(),
-      true
-    );
+    toggleLockedSkills();
   });
 
   //CONQUEST MODE PATCHES
   // onEnemyDeath
-  ctx.patch(CombatManager, "onEnemyDeath").before(function () {
+  ctx.patch(CombatManager, "onEnemyDeath").after(function () {
     if (!conquestGamemodeCheck()) return
     console.log("Jobs done: " + this.enemy.monster.id)
     if (this.enemy.monster.id == "melvorD:Plant") {
       console.log("Dead plant")
     }
-    toggleLockedSkills(
-      sidebar.categories().find((c) => c.id === "Non-Combat").items(),
-      false
-    );
+    toggleLockedSkills();
   });
   //Adds pre-ID level caps, Dont know why it needs to be out here to work?
   ctx.patch(Skill, "levelCap").get((o) => {
@@ -207,7 +195,9 @@ export async function setup(ctx) {
         this.tier = tier;
         this.active = false;
         this.autoStartNext = !fromClick;
-        if (conquestGamemodeCheck()) { this.taskTimer.start(50) } else { this.taskTimer.start(1000) }; //this is the change
+        //Custom Code
+        if (conquestGamemodeCheck()) { this.taskTimer.start(50) } else { this.taskTimer.start(1000) };
+        //End Custom Code
         this.renderRequired = true;
         this.renderNewButton = true;
       } else if (this.autoSlayer) {
@@ -237,6 +227,7 @@ export async function setup(ctx) {
     interval *= 1 + percentModifier / 100;
     interval += flatModifier;
     interval = roundToTickInterval(interval);
+    //Custom Code
     if (conquestGamemodeCheck()) {
       return Math.max(interval, 50);
     } else {
@@ -247,11 +238,13 @@ export async function setup(ctx) {
     let attackInterval = this.equipmentStats.attackSpeed || 4000;
     attackInterval = this.modifyAttackInterval(attackInterval);
     attackInterval = roundToTickInterval(attackInterval);
+    //Custom Code
     if (conquestGamemodeCheck()) {
       attackInterval = Math.max(attackInterval, 50);
     } else {
       attackInterval = Math.max(attackInterval, 500);
     }
+    //End Custom Code
     this.stats.attackInterval = attackInterval;
   });
 
@@ -277,88 +270,40 @@ export async function setup(ctx) {
 
 
 //Helper functions for hiding skills
-function lockedSkillItems(categoryItems) {
-  const charSkills = Array.from(game.skills.registeredObjects);
-  //If beat none
-  if (
-    game.combat.getDungeonCompleteCount(
-      game.dungeons.getObjectByID("melvorD:Volcanic_Cave")
-    ) < 1
-  ) {
-
-      console.log("Volc at one");
-    return categoryItems.filter((item) =>
-      charSkills.some(
-        (skill) =>
-          skill[0] === item.id &&
-          skill[1]._unlocked === false &&
-          (forbidden_skills.includes(item.id) ||
-            forbidden_skills_Throne_of_the_Herald.includes(item.id) ||
-            forbidden_skills_Impending_Darkness.includes(item.id) ||
-            forbidden_skills_Volcanic_Cave.includes(item.id))
-      )
-    );
-  }
-  //else if beat volcanic and not beat ID
-  else if (
-    game.combat.getDungeonCompleteCount(
-      game.dungeons.getObjectByID("melvorF:Impending_Darkness")
-    ) < 1
-  ) {
-    if (
-      game.combat.getDungeonCompleteCount(
+function toggleLockedSkills() {
+  let chatter = false;
+  function toggleLogic(categoryItems) {
+    categoryItems.forEach((item) => {
+      if (forbidden_skills.includes(item.id)) {
+        if (chatter) console.log("Lock Forbidden Skill: " + item.id)
+        item.rootEl.classList.add("hidden");
+        item.rootEl.setAttribute("aria-hidden", "true");
+      } else if (forbidden_skills_Throne_of_the_Herald.includes(item.id) && (game.combat.getDungeonCompleteCount(
+        game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald")
+      ) < 1)) {
+        if (chatter) console.log("Lock ToTH Skill: " + item.id)
+        item.rootEl.classList.add("hidden");
+        item.rootEl.setAttribute("aria-hidden", "true");
+      } else if (forbidden_skills_Impending_Darkness.includes(item.id) && (game.combat.getDungeonCompleteCount(
+        game.dungeons.getObjectByID("melvorF:Impending_Darkness")
+      ) < 1)) {
+        if (chatter) console.log("Lock ID Skill: " + item.id)
+        item.rootEl.classList.add("hidden");
+        item.rootEl.setAttribute("aria-hidden", "true");
+      } else if (forbidden_skills_Volcanic_Cave.includes(item.id) && (game.combat.getDungeonCompleteCount(
         game.dungeons.getObjectByID("melvorD:Volcanic_Cave")
-      ) == 1
-    )
-    return categoryItems.filter((item) =>
-      charSkills.some(
-        (skill) =>
-          skill[0] === item.id &&
-          skill[1]._unlocked === false &&
-          (forbidden_skills.includes(item.id) ||
-            forbidden_skills_Throne_of_the_Herald.includes(item.id) ||
-            forbidden_skills_Impending_Darkness.includes(item.id))
-      )
-    );
-  }
-  //else if beat ID and not ToTH
-  else if (
-    game.combat.getDungeonCompleteCount(
-      game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald")
-    ) < 1
-  ) {
-    return categoryItems.filter((item) =>
-      charSkills.some(
-        (skill) =>
-          skill[0] === item.id &&
-          skill[1]._unlocked === false &&
-          (forbidden_skills.includes(item.id) ||
-            forbidden_skills_Throne_of_the_Herald.includes(item.id))
-      )
-    );
-  }
-  //else if beat TOTH
-  else {
-    return categoryItems.filter((item) =>
-      charSkills.some(
-        (skill) =>
-          skill[0] === item.id &&
-          skill[1]._unlocked === false &&
-          forbidden_skills.includes(item.id)
-      )
-    );
-  }
-}
+      ) < 1)) {
+        if (chatter) console.log("Lock Volcanic Cave Skill: " + item.id)
+        item.rootEl.classList.add("hidden");
+        item.rootEl.setAttribute("aria-hidden", "true");
+      } else {
+        if (chatter) console.log("Unlock Skill: " + item.id)
+        item.rootEl.classList.remove("hidden");
+        item.rootEl.removeAttribute("aria-hidden");
+      }
 
-function toggleLockedSkills(categoryItems, hide) {
-  // console.log("Toggling Skill View");
-  lockedSkillItems(categoryItems).forEach((item) => {
-    if (hide) {
-      item.rootEl.classList.add("hidden");
-      item.rootEl.setAttribute("aria-hidden", "true");
-    } else {
-      item.rootEl.classList.remove("hidden");
-      item.rootEl.removeAttribute("aria-hidden");
-    }
-  });
+    });
+  }
+  toggleLogic(sidebar.categories().find((c) => c.id === "Non-Combat").items())
+  toggleLogic(sidebar.categories().find((c) => c.id === "Passive").items())
 }
