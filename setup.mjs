@@ -65,6 +65,7 @@ export async function setup(ctx) {
       return;
     }
     toggleLockedSkills();
+    modifyMonsterDrops();
   });
   /****************************************************/
   //CONQUEST MODE PATCHES
@@ -436,3 +437,26 @@ const petCheck = (enemyID) => {
 
   if (petID != false) game.petManager.unlockPetByID(petID);
 };
+
+//Add item to monster drop table helper function and main logic
+const modifyMonsterDrops = () => {
+  // addDropToLootTable('melvorD:Golbin', ["melvorD:Magic_Tree_Seed", 1, 5, 20])
+}
+
+const addDropToLootTable = (monster, drop_array) => {
+  //Monster should be a string
+  //Drop Array should be [item, minQuantity, MaxQuantity, weight]
+  let lootTable = game.monsters.find(m => m.id === monster)?.lootTable;
+  const drop = game.items.find(i => i.id === drop_array[0]);
+  if (lootTable && drop) {
+    const loot = {
+      item: drop,
+      minQuantity: drop_array[1],
+      maxQuantity: drop_array[2],
+      weight: drop_array[3]
+    };
+
+    lootTable.totalWeight += loot.weight;
+    lootTable.drops.push(loot);
+  }
+}
