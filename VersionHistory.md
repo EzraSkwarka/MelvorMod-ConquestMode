@@ -1,3 +1,9 @@
+V0.9.8
+- Added various drops to increse Completion Log percentage
+  - See Planning.md for spoilers
+- Buffed attack speed
+  - -50% => -70%
+
 V0.9.7
 - Added Treasured Golbin
   - Spoiler in planning document

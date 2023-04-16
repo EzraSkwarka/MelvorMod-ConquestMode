@@ -52,12 +52,12 @@
           "decreasedAttackIntervalPercent": 50,
           "decreasedMonsterRespawnTimer": 2000,
           "decreasedGlobalSkillIntervalPercent": 50,
-          "decreasedThievingStunIntervalPercent": 50,
+          "decreasedThievingStunIntervalPercent": 70,
           "increasedGPFromMonsters": 400,
           "increasedSlayerCoins": 200
         },
         "enemyModifiers": {
-          "decreasedAttackIntervalPercent": 50
+          "decreasedAttackIntervalPercent": 70
         },
         "hasTutorial": false
       },
@@ -107,15 +107,15 @@
           10000000
         ],
         "playerModifiers": {
-          "decreasedAttackIntervalPercent": 50,
+          "decreasedAttackIntervalPercent": 70,
           "decreasedMonsterRespawnTimer": 2000,
-          "decreasedGlobalSkillIntervalPercent": 80,
-          "decreasedThievingStunIntervalPercent": 80,
+          "decreasedGlobalSkillIntervalPercent": 50,
+          "decreasedThievingStunIntervalPercent": 70,
           "increasedGPFromMonsters": 400,
           "increasedSlayerCoins": 200
         },
         "enemyModifiers": {
-          "decreasedAttackIntervalPercent": 50
+          "decreasedAttackIntervalPercent": 70
         },
         "hasTutorial": false
       }
