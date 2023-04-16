@@ -72,10 +72,10 @@ Filtered Item ID info:
   ^ Add a Odious Collector golbin, make these the common drops
    - Call it the Repugnant Golbin
   
-  [O] melvorTotH:Hornbeam_Logs: Add to melvorTotH:Raven_Nest
-  [O] melvorTotH:Linden_Logs: Add to melvorTotH:Raven_Nest
-  [O] melvorTotH:Red_Oak_Logs: Add to melvorTotH:Raven_Nest
-  [O] melvorTotH:Mystic_Logs: Add to melvorTotH:Raven_Nest
+  [X] melvorTotH:Hornbeam_Logs: Add to melvorTotH:Raven_Nest
+  [X] melvorTotH:Linden_Logs: Add to melvorTotH:Raven_Nest
+  [X] melvorTotH:Red_Oak_Logs: Add to melvorTotH:Raven_Nest
+  [X] melvorTotH:Mystic_Logs: Add to melvorTotH:Raven_Nest
   
   [O] melvorTotH:Corundumite_Ore:
   [O] melvorTotH:Augite_Ore:
@@ -133,16 +133,16 @@ Filtered Equipment Item ID:
   ^ Add a blood shard golbin, have it drop blood shards. upgrade those shards into a chest, add skill capes to chest table
     - Call it the Hemo Golbin and add a rare drop of melvorTotH:Meteorite_Dust
 
-  [O] melvorD:Pirates_Lost_Ring: Add to melvorD:Treasure_Chest
-  [O] melvorD:Barbarian_Gloves: Add to melvorD:Treasure_Chest
-  [O] melvorD:Ancient_Ring_Of_Skills: Add to melvorD:Treasure_Chest
-  [O] melvorD:Ancient_Ring_Of_Mastery: Add to melvorD:Treasure_Chest
+  [X] melvorD:Pirates_Lost_Ring: Add to melvorD:Treasure_Chest
+  [X] melvorD:Barbarian_Gloves: Add to melvorD:Treasure_Chest
+  [X] melvorD:Ancient_Ring_Of_Skills: Add to melvorD:Treasure_Chest
+  [X] melvorD:Ancient_Ring_Of_Mastery: Add to melvorD:Treasure_Chest
   
-  [O] melvorTotH:Burning_Amulet_of_Gold: <= melvorTotH:Generous_Fire_Spirit
-  [O] melvorTotH:Burning_Amulet_of_Stardust: <= melvorTotH:Generous_Fire_Spirit
-  [O] melvorTotH:Burning_Amulet_of_Ash: <= melvorTotH:Generous_Fire_Spirit
-  [O] melvorTotH:Burning_Amulet_of_Charcoal: <= melvorTotH:Generous_Fire_Spirit
-  [O] melvorTotH:Burning_Amulet_of_XP: <= melvorTotH:Generous_Fire_Spirit
+  [<] melvorTotH:Burning_Amulet_of_Gold: <= melvorTotH:Generous_Fire_Spirit
+  [<] melvorTotH:Burning_Amulet_of_Stardust: <= melvorTotH:Generous_Fire_Spirit
+  [<] melvorTotH:Burning_Amulet_of_Ash: <= melvorTotH:Generous_Fire_Spirit
+  [<] melvorTotH:Burning_Amulet_of_Charcoal: <= melvorTotH:Generous_Fire_Spirit
+  [<] melvorTotH:Burning_Amulet_of_XP: <= melvorTotH:Generous_Fire_Spirit
 
   [<] melvorF:Max_Skillcape: Dependent on other skills?
   [<] melvorF:Cape_of_Completion: Dependent on all non-TotH items
@@ -194,7 +194,7 @@ Filtered Weapon Item IDs:
   [<] melvorTotH:Meteorite_Staff: <= melvorTotH:Meteorite_Ore
 
 Filtered Item IDs:
-  [O] melvorD:Raw_Magic_Fish: Add to melvorD:Treasure_Chest
+  [X] melvorD:Raw_Magic_Fish: Add to melvorD:Treasure_Chest
 
   [O] melvorTotH:Pumpkin: Find out if Lucky Herb Potion works on normal seeds (or could be made to)
   [O] melvorTotH:Chilli: see melvorTotH:Pumpkin
@@ -220,7 +220,7 @@ Filtered Item IDs:
   [<] melvorTotH:Starfruit_Cake_Perfect: <= melvorTotH:Starfruit
 
 Filtered Bone Item IDs:
-  [O] melvorD:Raw_Skeleton_Fish: Add to melvorD:Treasure_Chest
+  [X] melvorD:Raw_Skeleton_Fish: Add to melvorD:Treasure_Chest
 
 Filtered Herblore Item IDs:
   [<] melvorF:Performance_Enhancing_Potion_I: <= melvorD:Raw_Poison_Fish
@@ -250,13 +250,13 @@ Filtered Herblore Item IDs:
   [<] melvorTotH:Deadly_Toxins_Potion: <= melvorD:Raw_Poison_Fish
 
 Filtered Readable Item IDs:
-  [O] melvorD:Message_In_A_Bottle: Add to melvorD:Treasure_Chest
+  [X] melvorD:Message_In_A_Bottle: Add to melvorD:Treasure_Chest
 
 Filtered Openable Item ID:
-  [O] melvorD:Bird_Nest: Add to Moss Giant drop table
-  [O] melvorTotH:Raven_Nest: Add to Madremonte pickpocket table
-  [O] melvorTotH:Generous_Fire_Spirit: Add to melvorF:Fire_Chest
-  [O] melvorTotH:Lost_Chest: Add to Vampire Lord pickpocket table
+  [X] melvorD:Bird_Nest: Add to Moss Giant drop table
+  [X] melvorTotH:Raven_Nest: Add to Madremonte pickpocket table
+  [X] melvorTotH:Generous_Fire_Spirit: Add to melvorF:Fire_Chest
+  [X] melvorTotH:Lost_Chest: Add to Vampire Lord pickpocket table
 
 Filtered TokenItemID: 
   [X] melvorD:Mastery_Token_Farming: Droped by "conquest:treasured_golbin"

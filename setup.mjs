@@ -66,6 +66,8 @@ export async function setup(ctx) {
     }
     toggleLockedSkills();
     modifyMonsterDrops();
+    modifyPickpocketTables();
+    modifyOpenableItemTables();
   });
   /****************************************************/
   //CONQUEST MODE PATCHES
@@ -189,7 +191,7 @@ export async function setup(ctx) {
 
   //After Stealing from NPC:
   ctx.patch(Thieving, "postAction").after(function () {
-    markCheck(this.currentNPC.id);
+    markCheck(this.currentNPC.id); ``
   });
 
   /****************************************************/
@@ -286,7 +288,7 @@ export async function setup(ctx) {
         Math.floor(
           (this.getFoodHealing(this.food.currentSlot.item) *
             this.autoEatEfficiency) /
-            100
+          100
         ),
         1
       ); // This line is the fix
@@ -441,6 +443,7 @@ const petCheck = (enemyID) => {
 //Add item to monster drop table helper function and main logic
 const modifyMonsterDrops = () => {
   // addDropToLootTable('melvorD:Golbin', ["melvorD:Magic_Tree_Seed", 1, 5, 20])
+  addDropToLootTable('melvorD:MossGiant', ["melvorD:Bird_Nest", 2, 3, 2])
 }
 
 const addDropToLootTable = (monster, drop_array) => {
@@ -448,6 +451,11 @@ const addDropToLootTable = (monster, drop_array) => {
   //Drop Array should be [item, minQuantity, MaxQuantity, weight]
   let lootTable = game.monsters.find(m => m.id === monster)?.lootTable;
   const drop = game.items.find(i => i.id === drop_array[0]);
+
+  //Error Reporting
+  if (lootTable === undefined) console.warn("Failed to patch: " + item)
+  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item)
+
   if (lootTable && drop) {
     const loot = {
       item: drop,
@@ -458,5 +466,78 @@ const addDropToLootTable = (monster, drop_array) => {
 
     lootTable.totalWeight += loot.weight;
     lootTable.drops.push(loot);
+  }
+}
+
+const modifyPickpocketTables = () => {
+  // addDropToPickpocketTable('melvorF:MAN', ["melvorD:Magic_Tree_Seed", 1, 5, 20])
+  addDropToPickpocketTable("melvorTotH:MADREMONTE", ["melvorTotH:Raven_Nest", 2, 3, 1])
+  addDropToPickpocketTable("melvorTotH:VAMPIRE_LORD", ["melvorTotH:Lost_Chest", 2, 3, 1])
+}
+
+const addDropToPickpocketTable = (npc, drop_array) => {
+  //npc should be a string "melvorF:GOLBIN"
+  //Drop Array should be [item, minQuantity, MaxQuantity, weight]
+  let lootTable = game.thieving.actions.find(x => x.id === npc)?.lootTable;
+  const drop = game.items.find(i => i.id === drop_array[0]);
+
+  //Error Reporting
+  if (lootTable === undefined) console.warn("Failed to patch: " + item)
+  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item)
+
+  if (lootTable && drop) {
+    const loot = {
+      item: drop,
+      minQuantity: drop_array[1],
+      maxQuantity: drop_array[2],
+      weight: drop_array[3]
+    };
+
+    lootTable.totalWeight += loot.weight;
+    lootTable.drops.push(loot);
+  }
+}
+
+const modifyOpenableItemTables = () => {
+  addDropToOpenableItemTable("melvorF:Fire_Chest", ["melvorD:Generous_Fire_Spirit", 2, 3, 10])
+
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Message_In_A_Bottle", 1, 1, 1])
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Pirates_Lost_Ring", 1, 1, 1])
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Barbarian_Gloves", 1, 1, 1])
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Ancient_Ring_Of_Skills", 1, 1, 1])
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Ancient_Ring_Of_Mastery", 1, 1, 1])
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Raw_Skeleton_Fish", 5, 8, 10])
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Raw_Magic_Fish", 1, 3, 3])
+
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Hornbeam_Logs", 1, 3, 3])
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Linden_Logs", 1, 3, 3])
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Red_Oak_Logs", 1, 3, 3])
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Mystic_Logs", 1, 3, 3])
+
+}
+
+const addDropToOpenableItemTable = (item, drop_array) => {
+  //item should be a string "melvorF:GOLBIN"
+  //Drop Array should be [item, minQuantity, MaxQuantity, weight]
+
+  //Get info
+  let dropTable = game.items.find(x => x.id === item)?.dropTable;
+  const drop = game.items.find(i => i.id === drop_array[0]);
+
+  //Error Reporting
+  if (dropTable === undefined) console.warn("Failed to patch: " + item)
+  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item)
+
+  //Add to table
+  if (dropTable && drop) {
+    const loot = {
+      item: drop,
+      minQuantity: drop_array[1],
+      maxQuantity: drop_array[2],
+      weight: drop_array[3]
+    };
+
+    dropTable.totalWeight += loot.weight;
+    dropTable.drops.push(loot);
   }
 }
