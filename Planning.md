@@ -8,6 +8,7 @@
 - Dynamically load data files so added items and enemies don't break containment
 - Apply Interval reduction to dot Effects
   - Not sure if this is possible tbh
+- Add the treasured golbins and make "Legally Distinct Whimsydale"
 
 # ############################################
 # Done:
@@ -67,8 +68,8 @@ Codes:
 **If there is conflicting info, go with the entry in the Filtered Section**
 
 Filtered Item ID info:
-  [O] melvorF:Stardust:
-  [O] melvorF:Golden_Stardust:
+  [X] melvorF:Stardust:
+  [X] melvorF:Golden_Stardust:
   ^ Add a Odious Collector golbin, make these the common drops
    - Call it the Repugnant Golbin
   
@@ -77,9 +78,9 @@ Filtered Item ID info:
   [X] melvorTotH:Red_Oak_Logs: Add to melvorTotH:Raven_Nest
   [X] melvorTotH:Mystic_Logs: Add to melvorTotH:Raven_Nest
   
-  [O] melvorTotH:Corundumite_Ore:
-  [O] melvorTotH:Augite_Ore:
-  [O] melvorTotH:Divinite_Ore:
+  [X] melvorTotH:Corundumite_Ore:
+  [X] melvorTotH:Augite_Ore:
+  [X] melvorTotH:Divinite_Ore:
   ^ Add a Odious Collector golbin, make these scaling rare drops
 
   [<] melvorTotH:Meteorite_Ore: <= melvorTotH:Meteorite_Dust

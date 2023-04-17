@@ -49,7 +49,7 @@
           10000000
         ],
         "playerModifiers": {
-          "decreasedAttackIntervalPercent": 50,
+          "decreasedAttackIntervalPercent": 70,
           "decreasedMonsterRespawnTimer": 2000,
           "decreasedGlobalSkillIntervalPercent": 50,
           "decreasedThievingStunIntervalPercent": 70,

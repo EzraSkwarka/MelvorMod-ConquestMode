@@ -6,7 +6,7 @@
             {
                 "id": "treasured_golbin",
                 "name": "Treasured Golbin",
-                "media": "assets/monsters/Golden_Golbin_(pet).svg",
+                "media": "assets/monsters/Treasured_Golbin.svg",
                 "levels": {
                     "Hitpoints": 20,
                     "Attack": 60,
@@ -56,6 +56,73 @@
                         "minQuantity": 5,
                         "maxQuantity": 10,
                         "weight": 21
+                    }
+                ],
+                "gpDrops": {
+                    "min": 50,
+                    "max": 200
+                },
+                "canSlayer": true,
+                "isBoss": false,
+                "selectedSpell": "melvorD:FireBlast",
+                "bones": {
+                    "itemID": "melvorD:Magic_Bones",
+                    "quantity": 1
+                }
+            },
+            {
+                "id": "repugnant_golbin",
+                "name": "Repugnant Golbin",
+                "media": "assets/monsters/Repugnant_Golbin.svg",
+                "levels": {
+                    "Hitpoints": 20,
+                    "Attack": 60,
+                    "Strength": 60,
+                    "Defence": 60,
+                    "Ranged": 60,
+                    "Magic": 60
+                },
+                "equipmentStats": [
+                    {
+                        "key": "attackSpeed",
+                        "value": 3600
+                    }
+                ],
+                "ignoreCompletion": false,
+                "attackType": "magic",
+                "specialAttacks": [],
+                "passives": [],
+                "lootChance": 100,
+                "lootTable": [
+                    {
+                        "itemID": "melvorF:Stardust",
+                        "minQuantity": 5,
+                        "maxQuantity": 10,
+                        "weight": 60
+                    },
+                    {
+                        "itemID": "melvorF:Golden_Stardust",
+                        "minQuantity": 4,
+                        "maxQuantity": 8,
+                        "weight": 20
+                    },
+                    {
+                        "itemID": "melvorTotH:Corundumite_Ore",
+                        "minQuantity": 2,
+                        "maxQuantity": 5,
+                        "weight": 14
+                    },
+                    {
+                        "itemID": "melvorTotH:Augite_Ore",
+                        "minQuantity": 2,
+                        "maxQuantity": 4,
+                        "weight": 5
+                    },
+                    {
+                        "itemID": "melvorTotH:Divinite_Ore",
+                        "minQuantity": 1,
+                        "maxQuantity": 3,
+                        "weight": 1
                     }
                 ],
                 "gpDrops": {

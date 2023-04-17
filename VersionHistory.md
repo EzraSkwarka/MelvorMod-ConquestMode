@@ -1,8 +1,9 @@
 V0.9.8
-- Added various drops to increse Completion Log percentage
+- Added various drops to increase Completion Log percentage
   - See Planning.md for spoilers
 - Buffed attack speed
   - -50% => -70%
+- Added Repugnant Treasured Golbin
 
 V0.9.7
 - Added Treasured Golbin
