@@ -1,8 +1,4 @@
-let forbidden_skills_Volcanic_Cave = [
-  "melvorD:Thieving",
-  "melvorD:Cooking",
-  "melvorD:Summoning",
-];
+let forbidden_skills_Volcanic_Cave = ["melvorD:Thieving", "melvorD:Cooking", "melvorD:Summoning"];
 
 let forbidden_skills_Impending_Darkness = [
   "melvorD:Smithing",
@@ -37,14 +33,11 @@ export async function setup(ctx) {
 
   const setForbiddenSkillLevels = () => {
     //Set Levels to 120
-    if (game.firemaking.level < 120)
-      game.firemaking.setXP(exp.level_to_xp(120) + 1);
-    if (game.woodcutting.level < 120)
-      game.woodcutting.setXP(exp.level_to_xp(120) + 1);
+    if (game.firemaking.level < 120) game.firemaking.setXP(exp.level_to_xp(120) + 1);
+    if (game.woodcutting.level < 120) game.woodcutting.setXP(exp.level_to_xp(120) + 1);
     if (game.fishing.level < 120) game.fishing.setXP(exp.level_to_xp(120) + 1);
     if (game.mining.level < 120) game.mining.setXP(exp.level_to_xp(120) + 1);
-    if (game.firemaking.level < 120)
-      game.farming.setXP(exp.level_to_xp(120) + 1); //could be in a loop i guess?
+    if (game.firemaking.level < 120) game.farming.setXP(exp.level_to_xp(120) + 1); //could be in a loop i guess?
   };
 
   //Lifecycle Hooks
@@ -64,6 +57,12 @@ export async function setup(ctx) {
     if (!conquestGamemodeCheck()) {
       return;
     }
+    //Patches that use replace
+    patchUnlock();
+    patchIntervalCaps();
+    patchSlayer();
+
+    //Other patches
     toggleLockedSkills();
     modifyMonsterDrops();
     modifyPickpocketTables();
@@ -85,9 +84,7 @@ export async function setup(ctx) {
   //Adds pre-ID level caps, Dont know why it needs to be out here to work?
   ctx.patch(Skill, "levelCap").get((o) => {
     if (game.currentGamemode.id.includes("conquest")) {
-      let beatID = game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorF:Impending_Darkness")
-      );
+      let beatID = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID("melvorF:Impending_Darkness"));
       if (beatID >= 1) {
         return cloudManager.hasTotHEntitlement ? 120 : 99;
       } else {
@@ -99,54 +96,46 @@ export async function setup(ctx) {
   });
 
   //Restricts which skills can be unlocked
-  ctx.patch(Skill, "unlockOnClick").replace(function () {
-    if (this._unlocked) return;
-    //Custom Code
-    if (conquestGamemodeCheck()) {
-      let ToTH_Count = game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald")
-      );
-      let Impending_Darkness_Count = game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorF:Impending_Darkness")
-      );
-      let Volcanic_Cave_Count = game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorD:Volcanic_Cave")
-      );
-      if (Volcanic_Cave_Count < 1 &&
-        forbidden_skills_Volcanic_Cave.includes(this.id)) {
-        return;
-      } else if (
-        forbidden_skills_Impending_Darkness.includes(this.id) &&
-        Impending_Darkness_Count < 1
-      ) {
-        return;
-      } else if (
-        forbidden_skills_Throne_of_the_Herald.includes(this.id) &&
-        ToTH_Count < 1
-      ) {
-        return;
-      } else if (forbidden_skills.includes(this.id)) {
-        return;
+  const patchUnlock = () => {
+    ctx.patch(Skill, "unlockOnClick").replace(function () {
+      if (this._unlocked) return;
+      //Custom Code
+      if (conquestGamemodeCheck()) {
+        let ToTH_Count = game.combat.getDungeonCompleteCount(
+          game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald")
+        );
+        let Impending_Darkness_Count = game.combat.getDungeonCompleteCount(
+          game.dungeons.getObjectByID("melvorF:Impending_Darkness")
+        );
+        let Volcanic_Cave_Count = game.combat.getDungeonCompleteCount(
+          game.dungeons.getObjectByID("melvorD:Volcanic_Cave")
+        );
+        if (Volcanic_Cave_Count < 1 && forbidden_skills_Volcanic_Cave.includes(this.id)) {
+          return;
+        } else if (forbidden_skills_Impending_Darkness.includes(this.id) && Impending_Darkness_Count < 1) {
+          return;
+        } else if (forbidden_skills_Throne_of_the_Herald.includes(this.id) && ToTH_Count < 1) {
+          return;
+        } else if (forbidden_skills.includes(this.id)) {
+          return;
+        }
       }
-    }
-    //End Custom Code
-    const cost = this.game.getSkillUnlockCost();
-    if (!this.game.gp.canAfford(cost)) return;
-    this.game.gp.remove(cost);
-    this.setUnlock(true);
-    SwalLocale.fire({
-      icon: "success",
-      title: getLangString("MENU_TEXT", "SKILL_UNLOCKED"),
-      html: `<span class='text-dark'>${getLangString(
-        "MENU_TEXT",
-        "YOU_MAY_USE_SKILL"
-      )}</span>`,
+      //End Custom Code
+      const cost = this.game.getSkillUnlockCost();
+      if (!this.game.gp.canAfford(cost)) return;
+      this.game.gp.remove(cost);
+      this.setUnlock(true);
+      SwalLocale.fire({
+        icon: "success",
+        title: getLangString("MENU_TEXT", "SKILL_UNLOCKED"),
+        html: `<span class='text-dark'>${getLangString("MENU_TEXT", "YOU_MAY_USE_SKILL")}</span>`,
+      });
+      sendPlayFabEvent("adv_skill_unlocked", {
+        skillID: this.id,
+        unlockOrder: this.game.getSkillUnlockCount(),
+      });
     });
-    sendPlayFabEvent("adv_skill_unlocked", {
-      skillID: this.id,
-      unlockOrder: this.game.getSkillUnlockCount(),
-    });
-  });
+  };
 
   //Kill count and Skill View
   ctx.patch(Enemy, "renderImageAndName").after(function () {
@@ -154,9 +143,7 @@ export async function setup(ctx) {
 
     if (this.state === EnemyState.Alive)
       //Display Kill count
-      $(enemyHTMLElements.name)[0].append(
-        " - " + game.stats.monsterKillCount(game.combat.selectedMonster)
-      );
+      $(enemyHTMLElements.name)[0].append(" - " + game.stats.monsterKillCount(game.combat.selectedMonster));
   });
 
   //Patch Bank slots
@@ -165,9 +152,7 @@ export async function setup(ctx) {
 
     let tracker = 0;
     game.dungeons.forEach((dungeon) => {
-      let beatCount = game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID(dungeon.id)
-      );
+      let beatCount = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID(dungeon.id));
       if (beatCount >= 10) {
         tracker += 3;
       } else if (beatCount >= 3) {
@@ -192,28 +177,23 @@ export async function setup(ctx) {
 
   //After Stealing from NPC:
   ctx.patch(Thieving, "postAction").after(function () {
-    markCheck(this.currentNPC.id); ``
+    if (!conquestGamemodeCheck()) return;
+    markCheck(this.currentNPC.id);
   });
 
   /****************************************************/
   //Base Game Patches
   /****************************************************/
   //Slayer Task Reroll Speed
-  ctx
-    .patch(SlayerTask, "selectTask")
-    .replace(function (o, tier, costsCoins, render, fromClick = false) {
+  const patchSlayer = () => {
+    ctx.patch(SlayerTask, "selectTask").replace(function (o, tier, costsCoins, render, fromClick = false) {
       const data = SlayerTask.data[tier];
       if (costsCoins && !this.game.slayerCoins.canAfford(data.cost)) {
-        notifyPlayer(
-          this.game.slayer,
-          getLangString("TOASTS", "CANNOT_AFFORD_THAT"),
-          "danger"
-        );
+        notifyPlayer(this.game.slayer, getLangString("TOASTS", "CANNOT_AFFORD_THAT"), "danger");
       } else {
         const monsterSelection = this.getMonsterSelection(tier);
         if (monsterSelection.length > 0) {
-          const newMonster =
-            monsterSelection[rollInteger(0, monsterSelection.length - 1)];
+          const newMonster = monsterSelection[rollInteger(0, monsterSelection.length - 1)];
           if (costsCoins) this.game.slayerCoins.remove(data.cost);
           this.monster = newMonster;
           this.tier = tier;
@@ -229,17 +209,9 @@ export async function setup(ctx) {
           this.renderRequired = true;
           this.renderNewButton = true;
         } else if (this.autoSlayer) {
-          notifyPlayer(
-            this.game.slayer,
-            getLangString("TOASTS", "NO_TASK_FOUND_EQUIPMENT"),
-            "danger"
-          );
+          notifyPlayer(this.game.slayer, getLangString("TOASTS", "NO_TASK_FOUND_EQUIPMENT"), "danger");
         } else {
-          notifyPlayer(
-            this.game.slayer,
-            getLangString("TOASTS", "NO_TASK_FOUND_TIER"),
-            "danger"
-          );
+          notifyPlayer(this.game.slayer, getLangString("TOASTS", "NO_TASK_FOUND_TIER"), "danger");
         }
       }
       if (render) {
@@ -247,11 +219,11 @@ export async function setup(ctx) {
         this.clickNewTask();
       }
     });
+  };
 
   //Interval Caps
-  ctx
-    .patch(SkillWithMastery, "modifyInterval")
-    .replace(function (o, interval, action) {
+  const patchIntervalCaps = () => {
+    ctx.patch(SkillWithMastery, "modifyInterval").replace(function (o, interval, action) {
       const flatModifier = this.getFlatIntervalModifier(action);
       const percentModifier = this.getPercentageIntervalModifier(action);
       interval *= 1 + percentModifier / 100;
@@ -264,69 +236,58 @@ export async function setup(ctx) {
         return Math.max(interval, 500);
       }
     });
-  ctx.patch(Character, "computeAttackInterval").replace(function () {
-    let attackInterval = this.equipmentStats.attackSpeed || 4000;
-    attackInterval = this.modifyAttackInterval(attackInterval);
-    attackInterval = roundToTickInterval(attackInterval);
-    //Custom Code
-    if (conquestGamemodeCheck()) {
-      attackInterval = Math.max(attackInterval, 50);
-    } else {
-      attackInterval = Math.max(attackInterval, 500);
-    }
-    //End Custom Code
-    this.stats.attackInterval = attackInterval;
-  });
+    ctx.patch(Character, "computeAttackInterval").replace(function () {
+      let attackInterval = this.equipmentStats.attackSpeed || 4000;
+      attackInterval = this.modifyAttackInterval(attackInterval);
+      attackInterval = roundToTickInterval(attackInterval);
+      //Custom Code
+      if (conquestGamemodeCheck()) {
+        attackInterval = Math.max(attackInterval, 50);
+      } else {
+        attackInterval = Math.max(attackInterval, 500);
+      }
+      //End Custom Code
+      this.stats.attackInterval = attackInterval;
+    });
 
-  //Auto-eat Patch, pulled from Zxv's HCCO mod
-  ctx.patch(Player, "autoEat").replace(function (o, foodSwapped) {
-    // Fix autoeat potatoes in Arid Plains
-    if (
-      (this.hitpoints <= this.autoEatThreshold || foodSwapped) &&
-      this.food.currentSlot.item !== this.game.emptyFoodItem
-    ) {
-      const autoEatHealing = Math.max(
-        Math.floor(
-          (this.getFoodHealing(this.food.currentSlot.item) *
-            this.autoEatEfficiency) /
-          100
-        ),
-        1
-      ); // This line is the fix
-      let foodQty = Math.ceil(
-        (this.autoEatHPLimit - this.hitpoints) / autoEatHealing
-      );
-      foodQty = Math.min(foodQty, this.food.currentSlot.quantity);
-      this.eatFood(foodQty, false, this.autoEatEfficiency);
+    //Auto-eat Patch, pulled from Zxv's HCCO mod
+    ctx.patch(Player, "autoEat").replace(function (o, foodSwapped) {
+      // Fix autoeat potatoes in Arid Plains
       if (
-        this.food.currentSlot.quantity < 1 &&
-        this.modifiers.autoSwapFoodUnlocked > 0 &&
-        this.game.settings.enableAutoSwapFood
+        (this.hitpoints <= this.autoEatThreshold || foodSwapped) &&
+        this.food.currentSlot.item !== this.game.emptyFoodItem
       ) {
-        const nonEmptySlot = this.food.slots.findIndex(
-          (slot) => slot.item !== this.game.emptyFoodItem
-        );
-        if (nonEmptySlot >= 0) {
-          this.food.setSlot(nonEmptySlot);
-          if (this.hitpoints < this.autoEatHPLimit) this.autoEat(true);
+        const autoEatHealing = Math.max(
+          Math.floor((this.getFoodHealing(this.food.currentSlot.item) * this.autoEatEfficiency) / 100),
+          1
+        ); // This line is the fix
+        let foodQty = Math.ceil((this.autoEatHPLimit - this.hitpoints) / autoEatHealing);
+        foodQty = Math.min(foodQty, this.food.currentSlot.quantity);
+        this.eatFood(foodQty, false, this.autoEatEfficiency);
+        if (
+          this.food.currentSlot.quantity < 1 &&
+          this.modifiers.autoSwapFoodUnlocked > 0 &&
+          this.game.settings.enableAutoSwapFood
+        ) {
+          const nonEmptySlot = this.food.slots.findIndex((slot) => slot.item !== this.game.emptyFoodItem);
+          if (nonEmptySlot >= 0) {
+            this.food.setSlot(nonEmptySlot);
+            if (this.hitpoints < this.autoEatHPLimit) this.autoEat(true);
+          }
         }
       }
-    }
-  });
+    });
+  };
 }
 
 //Helper functions for hiding skills
 function toggleLockedSkills() {
   let chatter = false;
-  let ToTH_Count = game.combat.getDungeonCompleteCount(
-    game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald")
-  );
+  let ToTH_Count = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID("melvorTotH:Throne_of_the_Herald"));
   let Impending_Darkness_Count = game.combat.getDungeonCompleteCount(
     game.dungeons.getObjectByID("melvorF:Impending_Darkness")
   );
-  let Volcanic_Cave_Count = game.combat.getDungeonCompleteCount(
-    game.dungeons.getObjectByID("melvorD:Volcanic_Cave")
-  );
+  let Volcanic_Cave_Count = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID("melvorD:Volcanic_Cave"));
 
   function toggleLogic(categoryItems) {
     categoryItems.forEach((item) => {
@@ -334,24 +295,15 @@ function toggleLockedSkills() {
         if (chatter) console.log("Lock Forbidden Skill: " + item.id);
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
-      } else if (
-        forbidden_skills_Throne_of_the_Herald.includes(item.id) &&
-        ToTH_Count < 1
-      ) {
+      } else if (forbidden_skills_Throne_of_the_Herald.includes(item.id) && ToTH_Count < 1) {
         if (chatter) console.log("Lock ToTH Skill: " + item.id);
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
-      } else if (
-        forbidden_skills_Impending_Darkness.includes(item.id) &&
-        Impending_Darkness_Count < 1
-      ) {
+      } else if (forbidden_skills_Impending_Darkness.includes(item.id) && Impending_Darkness_Count < 1) {
         if (chatter) console.log("Lock ID Skill: " + item.id);
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
-      } else if (
-        forbidden_skills_Volcanic_Cave.includes(item.id) &&
-        Volcanic_Cave_Count < 1
-      ) {
+      } else if (forbidden_skills_Volcanic_Cave.includes(item.id) && Volcanic_Cave_Count < 1) {
         if (chatter) console.log("Lock Volcanic Cave Skill: " + item.id);
         item.rootEl.classList.add("hidden");
         item.rootEl.setAttribute("aria-hidden", "true");
@@ -392,9 +344,7 @@ const markCheck = (enemyID) => {
       markID = "melvorF:Devil";
       break;
     case enemyID == "melvorF:SeethingHornedElite" && random <= 0.001:
-      let beatID = game.combat.getDungeonCompleteCount(
-        game.dungeons.getObjectByID("melvorF:Impending_Darkness")
-      );
+      let beatID = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID("melvorF:Impending_Darkness"));
       if (beatID >= 1) markID = "melvorF:Devil";
       break;
     case enemyID == "melvorF:MINER" && random <= 0.00005:
@@ -405,8 +355,7 @@ const markCheck = (enemyID) => {
       break;
   }
 
-  if (markID != false)
-    game.summoning.discoverMark(game.summoning.actions.getObjectByID(markID));
+  if (markID != false) game.summoning.discoverMark(game.summoning.actions.getObjectByID(markID));
 };
 
 //Conquest Pet Checks
@@ -441,93 +390,98 @@ const petCheck = (enemyID) => {
   if (petID != false) game.petManager.unlockPetByID(petID);
 };
 
-//Add item to monster drop table helper function and main logic
+//Modify Drops
+const modifyOpenableItemTables = () => {
+  addDropToOpenableItemTable("melvorF:Fire_Chest", ["melvorD:Generous_Fire_Spirit", 2, 3, 10]);
+
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Message_In_A_Bottle", 1, 1, 1]);
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Pirates_Lost_Ring", 1, 1, 1]);
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Barbarian_Gloves", 1, 1, 1]);
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Ancient_Ring_Of_Skills", 1, 1, 1]);
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Ancient_Ring_Of_Mastery", 1, 1, 1]);
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Raw_Skeleton_Fish", 5, 8, 10]);
+  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Raw_Magic_Fish", 1, 3, 3]);
+
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Hornbeam_Logs", 1, 3, 3]);
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Linden_Logs", 1, 3, 3]);
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Red_Oak_Logs", 1, 3, 3]);
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Mystic_Logs", 1, 3, 3]);
+
+  //Whimsydale
+  addDropToOpenableItemTable("melvorD:Standard_Chest", ["conquest_gamemodes:leorics_shinbone", 1, 1, 1]);
+  addDropToOpenableItemTable("melvorD:Miolite_Chest", ["conquest_gamemodes:black_mushroom", 1, 1, 1]);
+};
+
 const modifyMonsterDrops = () => {
-  // addDropToLootTable('melvorD:Golbin', ["melvorD:Magic_Tree_Seed", 1, 5, 20])
-  addDropToLootTable('melvorD:MossGiant', ["melvorD:Bird_Nest", 2, 3, 2])
-}
+  addDropToLootTable("melvorD:MossGiant", ["melvorD:Bird_Nest", 2, 3, 2]);
+  addDropToLootTable("melvorF:WanderingBard", ["conquest_gamemodes:liquid_rainbow", 1, 1, 1]);
+  addDropToLootTable("melvorF:TurkulGiant", ["conquest_gamemodes:gibbering_gemstone", 1, 1, 1]);
+};
+
+const modifyPickpocketTables = () => {
+  addDropToPickpocketTable("melvorTotH:MADREMONTE", ["melvorTotH:Raven_Nest", 2, 3, 1]);
+  addDropToPickpocketTable("melvorTotH:VAMPIRE_LORD", ["melvorTotH:Lost_Chest", 2, 3, 1]);
+
+  addDropToPickpocketTable("melvorF:WOMAN", ["conquest_gamemodes:wirts_bell", 1, 1, 1]);
+};
 
 const addDropToLootTable = (monster, drop_array) => {
   //Monster should be a string
   //Drop Array should be [item, minQuantity, MaxQuantity, weight]
-  let lootTable = game.monsters.find(m => m.id === monster)?.lootTable;
-  const drop = game.items.find(i => i.id === drop_array[0]);
+  let lootTable = game.monsters.find((m) => m.id === monster)?.lootTable;
+  const drop = game.items.find((i) => i.id === drop_array[0]);
 
   //Error Reporting
-  if (lootTable === undefined) console.warn("Failed to patch: " + item)
-  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item)
+  if (lootTable === undefined) console.warn("Failed to patch: " + item);
+  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item);
 
   if (lootTable && drop) {
     const loot = {
       item: drop,
       minQuantity: drop_array[1],
       maxQuantity: drop_array[2],
-      weight: drop_array[3]
+      weight: drop_array[3],
     };
 
     lootTable.totalWeight += loot.weight;
     lootTable.drops.push(loot);
   }
-}
-
-const modifyPickpocketTables = () => {
-  // addDropToPickpocketTable('melvorF:MAN', ["melvorD:Magic_Tree_Seed", 1, 5, 20])
-  addDropToPickpocketTable("melvorTotH:MADREMONTE", ["melvorTotH:Raven_Nest", 2, 3, 1])
-  addDropToPickpocketTable("melvorTotH:VAMPIRE_LORD", ["melvorTotH:Lost_Chest", 2, 3, 1])
-}
+};
 
 const addDropToPickpocketTable = (npc, drop_array) => {
   //npc should be a string "melvorF:GOLBIN"
   //Drop Array should be [item, minQuantity, MaxQuantity, weight]
-  let lootTable = game.thieving.actions.find(x => x.id === npc)?.lootTable;
-  const drop = game.items.find(i => i.id === drop_array[0]);
+  let lootTable = game.thieving.actions.find((x) => x.id === npc)?.lootTable;
+  const drop = game.items.find((i) => i.id === drop_array[0]);
 
   //Error Reporting
-  if (lootTable === undefined) console.warn("Failed to patch: " + item)
-  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item)
+  if (lootTable === undefined) console.warn("Failed to patch: " + item);
+  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item);
 
   if (lootTable && drop) {
     const loot = {
       item: drop,
       minQuantity: drop_array[1],
       maxQuantity: drop_array[2],
-      weight: drop_array[3]
+      weight: drop_array[3],
     };
 
     lootTable.totalWeight += loot.weight;
     lootTable.drops.push(loot);
   }
-}
-
-const modifyOpenableItemTables = () => {
-  addDropToOpenableItemTable("melvorF:Fire_Chest", ["melvorD:Generous_Fire_Spirit", 2, 3, 10])
-
-  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Message_In_A_Bottle", 1, 1, 1])
-  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Pirates_Lost_Ring", 1, 1, 1])
-  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Barbarian_Gloves", 1, 1, 1])
-  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Ancient_Ring_Of_Skills", 1, 1, 1])
-  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Ancient_Ring_Of_Mastery", 1, 1, 1])
-  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Raw_Skeleton_Fish", 5, 8, 10])
-  addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Raw_Magic_Fish", 1, 3, 3])
-
-  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Hornbeam_Logs", 1, 3, 3])
-  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Linden_Logs", 1, 3, 3])
-  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Red_Oak_Logs", 1, 3, 3])
-  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Mystic_Logs", 1, 3, 3])
-
-}
+};
 
 const addDropToOpenableItemTable = (item, drop_array) => {
   //item should be a string "melvorF:GOLBIN"
   //Drop Array should be [item, minQuantity, MaxQuantity, weight]
 
   //Get info
-  let dropTable = game.items.find(x => x.id === item)?.dropTable;
-  const drop = game.items.find(i => i.id === drop_array[0]);
+  let dropTable = game.items.find((x) => x.id === item)?.dropTable;
+  const drop = game.items.find((i) => i.id === drop_array[0]);
 
   //Error Reporting
-  if (dropTable === undefined) console.warn("Failed to patch: " + item)
-  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item)
+  if (dropTable === undefined) console.warn("Failed to patch: " + item);
+  if (drop === undefined) console.warn("Failed to add " + drop_array[0] + " to " + item);
 
   //Add to table
   if (dropTable && drop) {
@@ -535,10 +489,10 @@ const addDropToOpenableItemTable = (item, drop_array) => {
       item: drop,
       minQuantity: drop_array[1],
       maxQuantity: drop_array[2],
-      weight: drop_array[3]
+      weight: drop_array[3],
     };
 
     dropTable.totalWeight += loot.weight;
     dropTable.drops.push(loot);
   }
-}
+};

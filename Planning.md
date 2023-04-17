@@ -2,6 +2,7 @@
 # TODO:
 # ############################################
 - Find list of items not available to CO + skills i'm allowing
+ - Tentatively done?
 - Make forbidden skill skill-capes purchase-able or otherwise obtainable
 - Adjust mark drop chance logic to be more in line with the vanilla rates
   - Also add the "Can't find more till you make one" logic
@@ -9,6 +10,26 @@
 - Apply Interval reduction to dot Effects
   - Not sure if this is possible tbh
 - Add the treasured golbins and make "Legally Distinct Whimsydale"
+  - [X] Treasure Goblin
+   - Treasured Golbin, drops mastery tokens
+  - [ ] Blood Goblin
+   - Hemogolbin, drops bloody shards, used to get capes
+  - [ ] Gem Hoarder
+   - Crystal Golbin, Drops Gems
+  - [x] Gelatinous Sire
+   - Mucilaginous_Lord, drops missing fish
+  - [ ] Gilded Baron
+   - Greedy Golbin, drops gold bars and lotsa gold
+  - [ ] Insufferable Miscreant
+   - Not Adding
+  - [X] Odious Collector
+   - Repugnant Hoarder, Stardust and metals
+  - [ ] Rainbow Goblin
+   - TBD
+  - [ ] Malevolent Tormentor
+   - Drops very rare pre-ID drops
+  - [ ] Menagerist
+   - TBD
 
 # ############################################
 # Done:
@@ -49,6 +70,18 @@
     - Ripper the Reindeer: Christmas Event 2020
     - Festive Cool Rock: Holiday Event 2021
     - Festive Chio: Holiday Event 2021
+- Add Whimsydale Drops
+  - [X] Black Mushroom
+    - conquest_gamemodes:black_mushroom => melvorD:Miolite_Chest
+  - [X] Gibbering Gemstone
+    - conquest_gamemodes:gibbering_gemstone => melvorF:TurkulGiant
+  - [X] Wirt's Bell
+    - conquest_gamemodes:wirts_bell => melvorF:WOMAN
+  - [X] Liquid Rainbow
+    - conquest_gamemodes:liquid_rainbow => melvorF:WanderingBard
+  - [X] Leoric's Shinbone
+    - conquest_gamemodes:leorics_shinbone => melvorD:Standard_Chest
+
 
 # ############################################
 # Item Breakdown
@@ -85,23 +118,23 @@ Filtered Item ID info:
 
   [<] melvorTotH:Meteorite_Ore: <= melvorTotH:Meteorite_Dust
 
-  [O] melvorD:Raw_Poison_Fish:
-  [O] melvorD:Leaping_Trout:
-  [O] melvorD:Leaping_Salmon:
-  [O] melvorD:Leaping_Broad_Fish:
-  [O] melvorD:Raw_Seahorse:
-  [O] melvorTotH:Raw_Lava_Fish:
-  [O] melvorTotH:Raw_Spike_Fish:
-  [O] melvorTotH:Raw_Rockfish:
-  [O] melvorTotH:Raw_Magma_Fish:
-  [O] melvorTotH:Raw_Large_Blowfish:
-  [O] melvorTotH:Raw_Static_Jellyfish:
-  [O] melvorTotH:Raw_Magma_Eel:
-  [O] melvorTotH:Raw_Frozen_Manta_Ray:
-  [O] melvorTotH:Raw_Ghost_Fish:
-  [O] melvorTotH:Raw_Mystic_Seahorse:
-  [O] melvorTotH:Raw_Terrorfish:
-  [O] melvorTotH:Raw_Mystic_Shark:
+  [X] melvorD:Raw_Poison_Fish:
+  [X] melvorD:Leaping_Trout:
+  [X] melvorD:Leaping_Salmon:
+  [X] melvorD:Leaping_Broad_Fish:
+  [X] melvorD:Raw_Seahorse:
+  [X] melvorTotH:Raw_Lava_Fish:
+  [X] melvorTotH:Raw_Spike_Fish:
+  [X] melvorTotH:Raw_Rockfish:
+  [X] melvorTotH:Raw_Magma_Fish:
+  [X] melvorTotH:Raw_Large_Blowfish:
+  [X] melvorTotH:Raw_Static_Jellyfish:
+  [X] melvorTotH:Raw_Magma_Eel:
+  [X] melvorTotH:Raw_Frozen_Manta_Ray:
+  [X] melvorTotH:Raw_Ghost_Fish:
+  [X] melvorTotH:Raw_Mystic_Seahorse:
+  [X] melvorTotH:Raw_Terrorfish:
+  [X] melvorTotH:Raw_Mystic_Shark:
   ^ Gelatinous Sire and Spawn split on ToTH and vanilla fish
 
   [<] melvorTotH:Carrion_Tree_Seeds: <= melvorTotH:Raven_Nest

@@ -72,6 +72,20 @@
         "tier": "none",
         "itemType": "Item",
         "customDescription": "This charred piece of Leoric was clearly once connected to his ankle and knee."
+      },
+      {
+        "id": "bloody_shard",
+        "name": "Bloody Shard",
+        "category": "Misc",
+        "type": "Misc",
+        "media": "assets/temp.png",
+        "ignoreCompletion": true,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 0,
+        "tier": "none",
+        "itemType": "Item",
+        "customDescription": ""
       }
     ],
     "shopDisplayOrder": [
@@ -85,6 +99,7 @@
         "id": "staff_of_herding",
         "media": "assets/items/Staff_of_Herding.png",
         "category": "melvorF:Slayer",
+        "customName": "Staff of Herding",
         "contains": {
           "items": []
         },
@@ -152,7 +167,7 @@
             "value": 3600
           }
         ],
-        "ignoreCompletion": false,
+        "ignoreCompletion": true,
         "attackType": "magic",
         "specialAttacks": [],
         "passives": [],
@@ -193,7 +208,7 @@
           "min": 50,
           "max": 200
         },
-        "canSlayer": true,
+        "canSlayer": false,
         "isBoss": false,
         "selectedSpell": "melvorD:FireBlast",
         "bones": {
@@ -203,7 +218,7 @@
       },
       {
         "id": "repugnant_golbin",
-        "name": "Repugnant Treasured Golbin",
+        "name": "Repugnant Hoarder",
         "media": "assets/monsters/Repugnant_Golbin.svg",
         "levels": {
           "Hitpoints": 20,
@@ -219,7 +234,7 @@
             "value": 3600
           }
         ],
-        "ignoreCompletion": false,
+        "ignoreCompletion": true,
         "attackType": "magic",
         "specialAttacks": [],
         "passives": [],
@@ -260,7 +275,60 @@
           "min": 50,
           "max": 200
         },
-        "canSlayer": true,
+        "canSlayer": false,
+        "isBoss": false,
+        "selectedSpell": "melvorD:FireBlast",
+        "bones": {
+          "itemID": "melvorD:Magic_Bones",
+          "quantity": 1
+        }
+      },
+      {
+        "id": "mucilaginous_lord",
+        "name": "Mucilaginous Lord",
+        "media": "assets/monsters/Mucilaginous_Lord.svg",
+        "levels": {
+          "Hitpoints": 20,
+          "Attack": 60,
+          "Strength": 60,
+          "Defence": 60,
+          "Ranged": 60,
+          "Magic": 60
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 3600
+          }
+        ],
+        "ignoreCompletion": true,
+        "attackType": "magic",
+        "specialAttacks": [],
+        "passives": [],
+        "lootChance": 100,
+        "lootTable": [
+          { "itemID": "melvorD:Raw_Poison_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 256 },
+          { "itemID": "melvorD:Leaping_Trout", "minQuantity": 5, "maxQuantity": 10, "weight": 128 },
+          { "itemID": "melvorD:Leaping_Salmon", "minQuantity": 5, "maxQuantity": 10, "weight": 128 },
+          { "itemID": "melvorD:Leaping_Broad_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 128 },
+          { "itemID": "melvorD:Raw_Seahorse", "minQuantity": 5, "maxQuantity": 10, "weight": 64 },
+          { "itemID": "melvorTotH:Raw_Lava_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 32 },
+          { "itemID": "melvorTotH:Raw_Spike_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 32 },
+          { "itemID": "melvorTotH:Raw_Rockfish", "minQuantity": 5, "maxQuantity": 10, "weight": 16 },
+          { "itemID": "melvorTotH:Raw_Magma_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 16 },
+          { "itemID": "melvorTotH:Raw_Large_Blowfish", "minQuantity": 5, "maxQuantity": 10, "weight": 8 },
+          { "itemID": "melvorTotH:Raw_Static_Jellyfish", "minQuantity": 5, "maxQuantity": 10, "weight": 4 },
+          { "itemID": "melvorTotH:Raw_Frozen_Manta_Ray", "minQuantity": 5, "maxQuantity": 10, "weight": 4 },
+          { "itemID": "melvorTotH:Raw_Ghost_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 2 },
+          { "itemID": "melvorTotH:Raw_Mystic_Seahorse", "minQuantity": 5, "maxQuantity": 10, "weight": 2 },
+          { "itemID": "melvorTotH:Raw_Terrorfish", "minQuantity": 5, "maxQuantity": 10, "weight": 1 },
+          { "itemID": "melvorTotH:Raw_Mystic_Shark", "minQuantity": 5, "maxQuantity": 10, "weight": 1 }
+        ],
+        "gpDrops": {
+          "min": 50,
+          "max": 200
+        },
+        "canSlayer": false,
         "isBoss": false,
         "selectedSpell": "melvorD:FireBlast",
         "bones": {
@@ -287,21 +355,22 @@
         "isDowngrade": false
       }
     ],
-    "slayerAreas": [
+    "combatAreas": [
       {
         "id": "whimsyshire",
         "name": "Whimsyshire",
         "media": "assets/locations/Whimsyshire.png",
         "monsterIDs": [
           "conquest_gamemodes:treasured_golbin",
-          "conquest_gamemodes:repugnant_golbin"
+          "conquest_gamemodes:repugnant_golbin",
+          "conquest_gamemodes:mucilaginous_lord"
         ],
-        "difficulty": [1],
+        "difficulty": [3],
         "entryRequirements": [
           {
-            "type": "SkillLevel",
-            "skillID": "melvorD:Slayer",
-            "level": 1
+            "type": "ShopPurchase",
+            "purchaseID": "conquest_gamemodes:staff_of_herding",
+            "count": 1
           }
         ],
         "areaEffectDescription": "-${effectValue}% Damage Reduction",
@@ -312,14 +381,12 @@
         }
       }
     ],
-    "slayerAreaDisplayOrder": [
-        {
-          "insertAt": "After",
-          "afterID": "melvorF:Forest_of_Goo",
-          "ids": [
-            "conquest_gamemodes:whimsyshire"
-          ]
-        }
+    "combatAreaDisplayOrder": [
+      {
+        "insertAt": "After",
+        "afterID": "melvorD:ElerineBattlegrounds",
+        "ids": ["conquest_gamemodes:whimsyshire"]
+      }
     ]
   }
 }
