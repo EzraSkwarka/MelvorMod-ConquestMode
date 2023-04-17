@@ -152,18 +152,18 @@ Filtered Item ID info:
    - Modify this to upgrade some number of them to melvorTotH:Meteorite_Ore
 
 Filtered Equipment Item ID: 
-  [O] melvorD:Farming_Skillcape:
-  [O] melvorD:Firemaking_Skillcape:
-  [O] melvorD:Fishing_Skillcape:
-  [O] melvorD:Mining_Skillcape:
-  [O] melvorD:Woodcutting_Skillcape:
-  [O] melvorF:Astrology_Skillcape:
-  [O] melvorTotH:Superior_Astrology_Skillcape:
-  [O] melvorTotH:Superior_Farming_Skillcape:
-  [O] melvorTotH:Superior_Firemaking_Skillcape:
-  [O] melvorTotH:Superior_Fishing_Skillcape:
-  [O] melvorTotH:Superior_Mining_Skillcape:
-  [O] melvorTotH:Superior_Woodcutting_Skillcape:
+  [X] melvorD:Farming_Skillcape:
+  [X] melvorD:Firemaking_Skillcape:
+  [X] melvorD:Fishing_Skillcape:
+  [X] melvorD:Mining_Skillcape:
+  [X] melvorD:Woodcutting_Skillcape:
+  [X] melvorF:Astrology_Skillcape:
+  [X] melvorTotH:Superior_Astrology_Skillcape:
+  [X] melvorTotH:Superior_Farming_Skillcape:
+  [X] melvorTotH:Superior_Firemaking_Skillcape:
+  [X] melvorTotH:Superior_Fishing_Skillcape:
+  [X] melvorTotH:Superior_Mining_Skillcape:
+  [X] melvorTotH:Superior_Woodcutting_Skillcape:
   ^ Add a blood shard golbin, have it drop blood shards. upgrade those shards into a chest, add skill capes to chest table
     - Call it the Hemo Golbin and add a rare drop of melvorTotH:Meteorite_Dust
 

@@ -86,6 +86,100 @@
         "tier": "none",
         "itemType": "Item",
         "customDescription": ""
+      },
+      {
+        "id": "bloody_shard_chest",
+        "name": "Bloody Shard Chest",
+        "category": "Dungeons",
+        "type": "Item",
+        "media": "assets/temp.png",
+        "ignoreCompletion": true,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 0,
+        "tier": "none",
+        "itemType": "Openable",
+        "dropTable": [
+          {
+            "itemID": "melvorF:Ash",
+            "minQuantity": 1,
+            "maxQuantity": 10,
+            "weight": 100
+          },
+          {
+            "itemID": "melvorD:Farming_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "melvorD:Firemaking_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "melvorD:Fishing_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "melvorD:Mining_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "melvorD:Woodcutting_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "melvorF:Astrology_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "melvorTotH:Superior_Astrology_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "melvorTotH:Superior_Farming_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorTotH:Superior_Firemaking_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorTotH:Superior_Fishing_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorTotH:Superior_Mining_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorTotH:Superior_Woodcutting_Skillcape",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ],
+        "customDescription": ""
       }
     ],
     "shopDisplayOrder": [
@@ -202,6 +296,49 @@
             "minQuantity": 5,
             "maxQuantity": 10,
             "weight": 21
+          }
+        ],
+        "gpDrops": {
+          "min": 50,
+          "max": 200
+        },
+        "canSlayer": false,
+        "isBoss": false,
+        "selectedSpell": "melvorD:FireBlast",
+        "bones": {
+          "itemID": "melvorD:Magic_Bones",
+          "quantity": 1
+        }
+      },
+      {
+        "id": "hemogolbin",
+        "name": "Hemogolbin",
+        "media": "assets/monsters/Hemogolbin.svg",
+        "levels": {
+          "Hitpoints": 20,
+          "Attack": 60,
+          "Strength": 60,
+          "Defence": 60,
+          "Ranged": 60,
+          "Magic": 60
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 3600
+          }
+        ],
+        "ignoreCompletion": true,
+        "attackType": "magic",
+        "specialAttacks": [],
+        "passives": [],
+        "lootChance": 100,
+        "lootTable": [
+          {
+            "itemID": "conquest_gamemodes:bloody_shard",
+            "minQuantity": 10,
+            "maxQuantity": 25,
+            "weight": 50
           }
         ],
         "gpDrops": {
@@ -353,6 +490,14 @@
         "itemCosts": [{ "id": "melvorF:Stardust", "quantity": 25 }],
         "rootItemIDs": ["melvorF:Stardust"],
         "isDowngrade": false
+      },
+      {
+        "upgradedItemID": "conquest_gamemodes:bloody_shard_chest",
+        "gpCost": 0,
+        "scCost": 0,
+        "itemCosts": [{ "id": "conquest_gamemodes:bloody_shard", "quantity": 100 }],
+        "rootItemIDs": ["conquest_gamemodes:bloody_shard"],
+        "isDowngrade": false
       }
     ],
     "combatAreas": [
@@ -362,6 +507,7 @@
         "media": "assets/locations/Whimsyshire.png",
         "monsterIDs": [
           "conquest_gamemodes:treasured_golbin",
+          "conquest_gamemodes:hemogolbin",
           "conquest_gamemodes:repugnant_golbin",
           "conquest_gamemodes:mucilaginous_lord"
         ],

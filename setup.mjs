@@ -409,7 +409,7 @@ const modifyOpenableItemTables = () => {
 
   //Whimsydale
   addDropToOpenableItemTable("melvorD:Standard_Chest", ["conquest_gamemodes:leorics_shinbone", 1, 1, 1]);
-  addDropToOpenableItemTable("melvorD:Miolite_Chest", ["conquest_gamemodes:black_mushroom", 1, 1, 1]);
+  addDropToOpenableItemTable("melvorF:Miolite_Chest", ["conquest_gamemodes:black_mushroom", 1, 1, 1]);
 };
 
 const modifyMonsterDrops = () => {
