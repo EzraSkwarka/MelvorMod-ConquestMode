@@ -1,6 +1,6 @@
 {
   "$schema": "https://test.melvoridle.com/dlcPrep/assets/schema/gameData.json",
-  "namespace": "conquest",
+  "namespace": "conquest_gamemodes",
   "data": {
     "gamemodes": [
       {
