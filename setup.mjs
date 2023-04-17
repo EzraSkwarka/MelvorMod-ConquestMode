@@ -100,6 +100,7 @@ export async function setup(ctx) {
 
   //Restricts which skills can be unlocked
   ctx.patch(Skill, "unlockOnClick").replace(function () {
+    if (this._unlocked) return;
     //Custom Code
     if (conquestGamemodeCheck()) {
       let ToTH_Count = game.combat.getDungeonCompleteCount(
@@ -111,7 +112,8 @@ export async function setup(ctx) {
       let Volcanic_Cave_Count = game.combat.getDungeonCompleteCount(
         game.dungeons.getObjectByID("melvorD:Volcanic_Cave")
       );
-      if (Volcanic_Cave_Count < 1) {
+      if (Volcanic_Cave_Count < 1 &&
+        forbidden_skills_Volcanic_Cave.includes(this.id)) {
         return;
       } else if (
         forbidden_skills_Impending_Darkness.includes(this.id) &&
@@ -128,7 +130,6 @@ export async function setup(ctx) {
       }
     }
     //End Custom Code
-    if (this._unlocked) return;
     const cost = this.game.getSkillUnlockCost();
     if (!this.game.gp.canAfford(cost)) return;
     this.game.gp.remove(cost);
