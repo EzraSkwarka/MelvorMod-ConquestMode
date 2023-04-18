@@ -9,27 +9,9 @@
 - Dynamically load data files so added items and enemies don't break containment
 - Apply Interval reduction to dot Effects
   - Not sure if this is possible tbh
-- Add the treasured golbins and make "Legally Distinct Whimsydale"
-  - [X] Treasure Goblin
-   - Treasured Golbin, drops mastery tokens
-  - [ ] Blood Goblin
-   - Hemogolbin, drops bloody shards, used to get capes
-  - [ ] Gem Hoarder
-   - Crystal Golbin, Drops Gems
-  - [x] Gelatinous Sire
-   - Mucilaginous_Lord, drops missing fish
-  - [ ] Gilded Baron
-   - Greedy Golbin, drops gold bars and lotsa gold
-  - [ ] Insufferable Miscreant
-   - Not Adding
-  - [X] Odious Collector
-   - Repugnant Hoarder, Stardust and metals
-  - [ ] Rainbow Goblin
-   - TBD
-  - [ ] Malevolent Tormentor
-   - Drops very rare pre-ID drops
-  - [ ] Menagerist
-   - TBD
+  - Looks like I'd have to modify every weapon's special attack feature
+- Hemogolbin bloody shard sprites
+- Better sprit for Staff of Herding
 
 # ############################################
 # Done:
@@ -81,6 +63,27 @@
     - conquest_gamemodes:liquid_rainbow => melvorF:WanderingBard
   - [X] Leoric's Shinbone
     - conquest_gamemodes:leorics_shinbone => melvorD:Standard_Chest
+- Add the treasured golbins and make "Legally Distinct Whimsydale"
+  - [X] Treasure Goblin
+   - Treasured Golbin, drops mastery tokens
+  - [X] Blood Goblin
+   - Hemogolbin, drops bloody shards, used to get capes
+  - [X] Gem Hoarder
+   - Crystal Golbin, Drops Gems
+  - [x] Gelatinous Sire
+   - Mucilaginous_Lord, drops missing fish
+  - [X] Gilded Baron
+   - Greedy Golbin, drops gold bars and lotsa gold
+  - [X] Insufferable Miscreant
+   - Not Adding
+  - [X] Odious Collector
+   - Repugnant Hoarder, Stardust and metals
+  - [X] Rainbow Goblin
+   - TBD
+  - [O] Malevolent Tormentor
+   - Drops very rare pre-ID drops
+  - [X] Menagerist
+   - TBD
 
 
 # ############################################
@@ -230,10 +233,11 @@ Filtered Weapon Item IDs:
 Filtered Item IDs:
   [X] melvorD:Raw_Magic_Fish: Add to melvorD:Treasure_Chest
 
-  [O] melvorTotH:Pumpkin: Find out if Lucky Herb Potion works on normal seeds (or could be made to)
-  [O] melvorTotH:Chilli: see melvorTotH:Pumpkin
-  [O] melvorTotH:Starfruit: see melvorTotH:Pumpkin
-  [O] melvorTotH:Bananas: see melvorTotH:Pumpkin
+  [X] melvorTotH:Pumpkin: <= melvorTotH:HungryPlant 
+  [X] melvorTotH:Chilli: <= melvorTotH:BurningSnake 
+  [X] melvorTotH:Starfruit: <= melvorTotH:PoisonToad 
+  [X] melvorTotH:Bananas: <= melvorTotH:Kongamato
+  ^ Patched lucky herb potion to also work on allotment and tree crops
 
   [<] melvorD:Seahorse: Needs <= melvorD:Raw_Seahorse
   [<] melvorD:Seahorse_Perfect: <= melvorD:Raw_Seahorse

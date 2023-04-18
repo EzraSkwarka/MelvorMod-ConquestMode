@@ -18,6 +18,20 @@
         "customDescription": "Now those are some big mushrooms"
       },
       {
+        "id": "staff_of_herding",
+        "name": "Staff of Herding",
+        "category": "Misc",
+        "type": "Misc",
+        "media": "assets/items/Staff_of_Herding.png",
+        "ignoreCompletion": true,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 5000,
+        "tier": "none",
+        "itemType": "Item",
+        "customDescription": "Allows access to Whimsydale"
+      },
+      {
         "id": "gibbering_gemstone",
         "name": "Gibbering Gemstone",
         "category": "Misc",
@@ -195,16 +209,16 @@
         "category": "melvorF:Slayer",
         "customName": "Staff of Herding",
         "contains": {
-          "items": []
+          "items": [{"id":"conquest_gamemodes:staff_of_herding","quantity": 1}]
         },
         "cost": {
           "gp": {
             "type": "Fixed",
-            "cost": 10000000
+            "cost": 10000000000
           },
           "slayerCoins": {
             "type": "Fixed",
-            "cost": 10000000
+            "cost": 10000000000
           },
           "items": [
             {
@@ -236,7 +250,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [],
         "purchaseRequirements": [],
-        "defaultBuyLimit": 0,
+        "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customDescription": "Used to get somewhere that doesn't exist."
@@ -248,12 +262,12 @@
         "name": "Treasured Golbin",
         "media": "assets/monsters/Treasured_Golbin.svg",
         "levels": {
-          "Hitpoints": 20,
-          "Attack": 60,
-          "Strength": 60,
-          "Defence": 60,
-          "Ranged": 60,
-          "Magic": 60
+          "Hitpoints": 200,
+          "Attack": 69,
+          "Strength": 69,
+          "Defence": 69,
+          "Ranged": 69,
+          "Magic": 69
         },
         "equipmentStats": [
           {
@@ -315,12 +329,12 @@
         "name": "Hemogolbin",
         "media": "assets/monsters/Hemogolbin.svg",
         "levels": {
-          "Hitpoints": 20,
-          "Attack": 60,
-          "Strength": 60,
-          "Defence": 60,
-          "Ranged": 60,
-          "Magic": 60
+          "Hitpoints": 200,
+          "Attack": 69,
+          "Strength": 69,
+          "Defence": 69,
+          "Ranged": 69,
+          "Magic": 69
         },
         "equipmentStats": [
           {
@@ -358,12 +372,12 @@
         "name": "Repugnant Hoarder",
         "media": "assets/monsters/Repugnant_Golbin.svg",
         "levels": {
-          "Hitpoints": 20,
-          "Attack": 60,
-          "Strength": 60,
-          "Defence": 60,
-          "Ranged": 60,
-          "Magic": 60
+          "Hitpoints": 200,
+          "Attack": 69,
+          "Strength": 69,
+          "Defence": 69,
+          "Ranged": 69,
+          "Magic": 69
         },
         "equipmentStats": [
           {
@@ -425,12 +439,12 @@
         "name": "Mucilaginous Lord",
         "media": "assets/monsters/Mucilaginous_Lord.svg",
         "levels": {
-          "Hitpoints": 20,
-          "Attack": 60,
-          "Strength": 60,
-          "Defence": 60,
-          "Ranged": 60,
-          "Magic": 60
+          "Hitpoints": 200,
+          "Attack": 69,
+          "Strength": 69,
+          "Defence": 69,
+          "Ranged": 69,
+          "Magic": 69
         },
         "equipmentStats": [
           {
@@ -464,6 +478,85 @@
         "gpDrops": {
           "min": 50,
           "max": 200
+        },
+        "canSlayer": false,
+        "isBoss": false,
+        "selectedSpell": "melvorD:FireBlast",
+        "bones": {
+          "itemID": "melvorD:Magic_Bones",
+          "quantity": 1
+        }
+      },
+      {
+        "id": "crystal_golbin",
+        "name": "Crystal Golbin",
+        "media": "assets/monsters/Crystal_Golbin.svg",
+        "levels": {
+          "Hitpoints": 200,
+          "Attack": 69,
+          "Strength": 69,
+          "Defence": 69,
+          "Ranged": 69,
+          "Magic": 69
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 3600
+          }
+        ],
+        "ignoreCompletion": true,
+        "attackType": "magic",
+        "specialAttacks": [],
+        "passives": [],
+        "lootChance": 100,
+        "lootTable": [
+          { "itemID": "melvorD:Topaz", "minQuantity": 5, "maxQuantity": 10, "weight": 500 },
+          { "itemID": "melvorD:Sapphire", "minQuantity": 5, "maxQuantity": 10, "weight": 175 },
+          { "itemID": "melvorD:Ruby", "minQuantity": 5, "maxQuantity": 10, "weight": 175 },
+          { "itemID": "melvorD:Emerald", "minQuantity": 5, "maxQuantity": 10, "weight": 100 },
+          { "itemID": "melvorD:Diamond", "minQuantity": 5, "maxQuantity": 10, "weight": 50 },
+          { "itemID": "melvorF:Jadestone", "minQuantity": 5, "maxQuantity": 10, "weight": 1 }
+        ],
+        "gpDrops": {
+          "min": 50,
+          "max": 200
+        },
+        "canSlayer": false,
+        "isBoss": false,
+        "selectedSpell": "melvorD:FireBlast",
+        "bones": {
+          "itemID": "melvorD:Magic_Bones",
+          "quantity": 1
+        }
+      },
+      {
+        "id": "greedy_golbin",
+        "name": "Greedy Golbin",
+        "media": "assets/monsters/Greedy_Golbin.svg",
+        "levels": {
+          "Hitpoints": 200,
+          "Attack": 69,
+          "Strength": 69,
+          "Defence": 69,
+          "Ranged": 69,
+          "Magic": 69
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 3600
+          }
+        ],
+        "ignoreCompletion": true,
+        "attackType": "magic",
+        "specialAttacks": [],
+        "passives": [],
+        "lootChance": 0,
+        "lootTable": [],
+        "gpDrops": {
+          "min": 500,
+          "max": 2000
         },
         "canSlayer": false,
         "isBoss": false,
@@ -509,14 +602,15 @@
           "conquest_gamemodes:treasured_golbin",
           "conquest_gamemodes:hemogolbin",
           "conquest_gamemodes:repugnant_golbin",
-          "conquest_gamemodes:mucilaginous_lord"
+          "conquest_gamemodes:mucilaginous_lord",
+          "conquest_gamemodes:crystal_golbin",
+          "conquest_gamemodes:greedy_golbin"
         ],
         "difficulty": [3],
         "entryRequirements": [
           {
-            "type": "ShopPurchase",
-            "purchaseID": "conquest_gamemodes:staff_of_herding",
-            "count": 1
+            "type": "ItemFound",
+            "itemID": "conquest_gamemodes:staff_of_herding"
           }
         ],
         "areaEffectDescription": "-${effectValue}% Damage Reduction",

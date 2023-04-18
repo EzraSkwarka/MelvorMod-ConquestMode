@@ -61,6 +61,8 @@ export async function setup(ctx) {
     patchUnlock();
     patchIntervalCaps();
     patchSlayer();
+    patchLuckyHerbTable();
+
 
     //Other patches
     toggleLockedSkills();
@@ -278,6 +280,16 @@ export async function setup(ctx) {
       }
     });
   };
+
+  const patchLuckyHerbTable = () => {
+    if (game.skills.find((c) => c.id === "melvorD:Farming").herbSeedToProductMap) {
+      game.skills.find((c) => c.id === "melvorD:Farming").actions.forEach((recipe) => {
+        if ((recipe.category.id === "melvorD:Herb") || (recipe.category.id === "melvorD:Allotment") || (recipe.category.id === "melvorD:Tree")) {
+          game.skills.find((c) => c.id === "melvorD:Farming").herbSeedToProductMap.set(recipe.seedCost.item, recipe.product);
+        }
+      })
+    }
+  }
 }
 
 //Helper functions for hiding skills
@@ -413,9 +425,14 @@ const modifyOpenableItemTables = () => {
 };
 
 const modifyMonsterDrops = () => {
+  //Whimsydale
   addDropToLootTable("melvorD:MossGiant", ["melvorD:Bird_Nest", 2, 3, 2]);
   addDropToLootTable("melvorF:WanderingBard", ["conquest_gamemodes:liquid_rainbow", 1, 1, 1]);
   addDropToLootTable("melvorF:TurkulGiant", ["conquest_gamemodes:gibbering_gemstone", 1, 1, 1]);
+  
+  addDropToLootTable("melvorTotH:HungryPlant", ["melvorTotH:Pumpkin_Seeds", 3, 7, 50]);
+  addDropToLootTable("melvorTotH:PoisonToad", ["melvorTotH:Starfruit_Seeds", 3, 7, 50]);
+  addDropToLootTable("melvorTotH:Kongamato", ["melvorTotH:Banana_Tree_Seeds", 3, 7, 50]);
 };
 
 const modifyPickpocketTables = () => {
