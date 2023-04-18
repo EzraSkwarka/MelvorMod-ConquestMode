@@ -1,3 +1,15 @@
+V1.0.0
+- Added Whimsydale
+- All Items should now be obtainable
+
+
+V0.9.8
+- Added various drops to increase Completion Log percentage
+  - See Planning.md for spoilers
+- Buffed attack speed
+  - -50% => -70%
+- Added Repugnant Treasured Golbin
+
 V0.9.7
 - Added Treasured Golbin
   - Spoiler in planning document
