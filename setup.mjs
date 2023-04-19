@@ -22,8 +22,8 @@ let forbidden_skills = [
 
 export async function setup(ctx) {
   //load Data
-  const gamemodeJSON = await ctx.loadData("data/gamemode.json");
   const monstersJSON = await ctx.loadData("data/monsters.json");
+  const itemsJSON = await ctx.loadData("data/items.json");
 
   // Helper patch functions
   const conquestGamemodeCheck = (gamemode = game.currentGamemode) => {
@@ -63,13 +63,29 @@ export async function setup(ctx) {
     patchSlayer();
     patchLuckyHerbTable();
 
-
     //Other patches
     toggleLockedSkills();
     modifyMonsterDrops();
     modifyPickpocketTables();
     modifyOpenableItemTables();
   });
+
+  let dataBankRegistered = false;
+
+  ctx.patch(Bank, "decode").before(function (reader, version) {
+    if (conquestGamemodeCheck()) {
+      if (dataBankRegistered) {
+        console.warn("Data already registered");
+        return;
+      }
+
+      console.warn("Loading data packages");
+      game.registerDataPackage(itemsJSON);
+      game.registerDataPackage(monstersJSON)
+      dataBankRegistered = true;
+    }
+  });
+  
   /****************************************************/
   //CONQUEST MODE PATCHES
   /****************************************************/
@@ -283,13 +299,21 @@ export async function setup(ctx) {
 
   const patchLuckyHerbTable = () => {
     if (game.skills.find((c) => c.id === "melvorD:Farming").herbSeedToProductMap) {
-      game.skills.find((c) => c.id === "melvorD:Farming").actions.forEach((recipe) => {
-        if ((recipe.category.id === "melvorD:Herb") || (recipe.category.id === "melvorD:Allotment") || (recipe.category.id === "melvorD:Tree")) {
-          game.skills.find((c) => c.id === "melvorD:Farming").herbSeedToProductMap.set(recipe.seedCost.item, recipe.product);
-        }
-      })
+      game.skills
+        .find((c) => c.id === "melvorD:Farming")
+        .actions.forEach((recipe) => {
+          if (
+            recipe.category.id === "melvorD:Herb" ||
+            recipe.category.id === "melvorD:Allotment" ||
+            recipe.category.id === "melvorD:Tree"
+          ) {
+            game.skills
+              .find((c) => c.id === "melvorD:Farming")
+              .herbSeedToProductMap.set(recipe.seedCost.item, recipe.product);
+          }
+        });
     }
-  }
+  };
 }
 
 //Helper functions for hiding skills
@@ -429,7 +453,7 @@ const modifyMonsterDrops = () => {
   addDropToLootTable("melvorD:MossGiant", ["melvorD:Bird_Nest", 2, 3, 2]);
   addDropToLootTable("melvorF:WanderingBard", ["conquest_gamemodes:liquid_rainbow", 1, 1, 1]);
   addDropToLootTable("melvorF:TurkulGiant", ["conquest_gamemodes:gibbering_gemstone", 1, 1, 1]);
-  
+
   addDropToLootTable("melvorTotH:HungryPlant", ["melvorTotH:Pumpkin_Seeds", 3, 7, 50]);
   addDropToLootTable("melvorTotH:PoisonToad", ["melvorTotH:Starfruit_Seeds", 3, 7, 50]);
   addDropToLootTable("melvorTotH:Kongamato", ["melvorTotH:Banana_Tree_Seeds", 3, 7, 50]);

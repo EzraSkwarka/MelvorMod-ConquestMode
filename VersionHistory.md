@@ -1,6 +1,6 @@
 V1.0.0
-- Added Whimsydale
 - All Items should now be obtainable
+- Added A Secret
 
 
 V0.9.8
