@@ -48,7 +48,6 @@ export async function setup(ctx) {
       game.combat.player.summonAttackInterval = 500;
 
       setForbiddenSkillLevels();
-      game.postDataRegistration();
     } else {
       console.log("Not in Conquest Mode.");
     }
