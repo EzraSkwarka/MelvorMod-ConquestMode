@@ -1,6 +1,10 @@
+V1.0.1
+- Quarantined Mod content
+- Added better assets for bloody shard chain
+
 V1.0.0
-- Added Whimsydale
 - All Items should now be obtainable
+- Added A Secret
 
 
 V0.9.8

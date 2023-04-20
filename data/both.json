@@ -1,0 +1,633 @@
+{
+    "$schema": "https://test.melvoridle.com/dlcPrep/assets/schema/gameData.json",
+    "namespace": "conquest_gamemodes",
+    "data": {
+      "items": [
+        {
+          "id": "black_mushroom",
+          "name": "Black Mushroom",
+          "category": "Misc",
+          "type": "Misc",
+          "media": "assets/items/Black_Mushroom.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 5000,
+          "tier": "none",
+          "itemType": "Item",
+          "customDescription": "Now those are some big mushrooms"
+        },
+        {
+          "id": "staff_of_herding",
+          "name": "Staff of Herding",
+          "category": "Misc",
+          "type": "Misc",
+          "media": "assets/items/Staff_of_Herding.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 5000,
+          "tier": "none",
+          "itemType": "Item",
+          "customDescription": "Allows access to Whimsydale"
+        },
+        {
+          "id": "gibbering_gemstone",
+          "name": "Gibbering Gemstone",
+          "category": "Misc",
+          "type": "Misc",
+          "media": "assets/items/Gibbering_Gemstone.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 5000,
+          "tier": "none",
+          "itemType": "Item",
+          "customDescription": "It seems to be active but it's difficult to tell."
+        },
+        {
+          "id": "wirts_bell",
+          "name": "Wirt's Bell",
+          "category": "Misc",
+          "type": "Misc",
+          "media": "assets/items/Wirt's_Bell.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 5000,
+          "tier": "none",
+          "itemType": "Item",
+          "customDescription": "When the demons come, close your eyes and ring this... it takes you far, far away..."
+        },
+        {
+          "id": "liquid_rainbow",
+          "name": "Liquid Rainbow",
+          "category": "Misc",
+          "type": "Misc",
+          "media": "assets/items/Liquid_Rainbow.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 5000,
+          "tier": "none",
+          "itemType": "Item",
+          "customDescription": "The colors swirl and twist in hypnotic patterns."
+        },
+        {
+          "id": "leorics_shinbone",
+          "name": "Leoric's Shinebone",
+          "category": "Misc",
+          "type": "Misc",
+          "media": "assets/items/Leoric's_Shinbone.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 5000,
+          "tier": "none",
+          "itemType": "Item",
+          "customDescription": "This charred piece of Leoric was clearly once connected to his ankle and knee."
+        },
+        {
+          "id": "bloody_shard",
+          "name": "Bloody Shard",
+          "category": "Misc",
+          "type": "Misc",
+          "media": "assets/temp.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 0,
+          "tier": "none",
+          "itemType": "Item",
+          "customDescription": ""
+        },
+        {
+          "id": "bloody_shard_chest",
+          "name": "Bloody Shard Chest",
+          "category": "Dungeons",
+          "type": "Item",
+          "media": "assets/temp.png",
+          "ignoreCompletion": true,
+          "obtainFromItemLog": false,
+          "golbinRaidExclusive": false,
+          "sellsFor": 0,
+          "tier": "none",
+          "itemType": "Openable",
+          "dropTable": [
+            {
+              "itemID": "melvorF:Ash",
+              "minQuantity": 1,
+              "maxQuantity": 10,
+              "weight": 100
+            },
+            {
+              "itemID": "melvorD:Farming_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorD:Firemaking_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorD:Fishing_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorD:Mining_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorD:Woodcutting_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorF:Astrology_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorTotH:Superior_Astrology_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorTotH:Superior_Farming_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 1
+            },
+            {
+              "itemID": "melvorTotH:Superior_Firemaking_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 1
+            },
+            {
+              "itemID": "melvorTotH:Superior_Fishing_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 1
+            },
+            {
+              "itemID": "melvorTotH:Superior_Mining_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 1
+            },
+            {
+              "itemID": "melvorTotH:Superior_Woodcutting_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 1
+            }
+          ],
+          "customDescription": ""
+        }
+      ],
+      "shopDisplayOrder": [
+        {
+          "insertAt": "End",
+          "ids": ["conquest_gamemodes:staff_of_herding"]
+        }
+      ],
+      "shopPurchases": [
+        {
+          "id": "staff_of_herding",
+          "media": "assets/items/Staff_of_Herding.png",
+          "category": "melvorF:Slayer",
+          "customName": "Staff of Herding",
+          "contains": {
+            "items": [{"id":"conquest_gamemodes:staff_of_herding","quantity": 1}]
+          },
+          "cost": {
+            "gp": {
+              "type": "Fixed",
+              "cost": 10000000000
+            },
+            "slayerCoins": {
+              "type": "Fixed",
+              "cost": 10000000000
+            },
+            "items": [
+              {
+                "id": "conquest_gamemodes:black_mushroom",
+                "quantity": 10
+              },
+              {
+                "id": "conquest_gamemodes:gibbering_gemstone",
+                "quantity": 10
+              },
+              {
+                "id": "conquest_gamemodes:wirts_bell",
+                "quantity": 10
+              },
+              {
+                "id": "conquest_gamemodes:liquid_rainbow",
+                "quantity": 10
+              },
+              {
+                "id": "conquest_gamemodes:leorics_shinbone",
+                "quantity": 10
+              }
+            ],
+            "raidCoins": {
+              "type": "Fixed",
+              "cost": 0
+            }
+          },
+          "allowQuantityPurchase": false,
+          "unlockRequirements": [],
+          "purchaseRequirements": [],
+          "defaultBuyLimit": 1,
+          "buyLimitOverrides": [],
+          "showBuyLimit": false,
+          "customDescription": "Used to get somewhere that doesn't exist."
+        }
+      ],
+      "itemUpgrades": [
+        {
+          "upgradedItemID": "melvorTotH:Meteorite_Ore",
+          "gpCost": 0,
+          "scCost": 0,
+          "itemCosts": [{ "id": "melvorF:Golden_Stardust", "quantity": 25 }],
+          "rootItemIDs": ["melvorF:Golden_Stardust"],
+          "isDowngrade": false
+        },
+        {
+          "upgradedItemID": "melvorF:Golden_Stardust",
+          "gpCost": 0,
+          "scCost": 0,
+          "itemCosts": [{ "id": "melvorF:Stardust", "quantity": 25 }],
+          "rootItemIDs": ["melvorF:Stardust"],
+          "isDowngrade": false
+        },
+        {
+          "upgradedItemID": "conquest_gamemodes:bloody_shard_chest",
+          "gpCost": 0,
+          "scCost": 0,
+          "itemCosts": [{ "id": "conquest_gamemodes:bloody_shard", "quantity": 100 }],
+          "rootItemIDs": ["conquest_gamemodes:bloody_shard"],
+          "isDowngrade": false
+        }
+      ],
+      "monsters": [
+        {
+          "id": "treasured_golbin",
+          "name": "Treasured Golbin",
+          "media": "assets/monsters/Treasured_Golbin.svg",
+          "levels": {
+            "Hitpoints": 200,
+            "Attack": 69,
+            "Strength": 69,
+            "Defence": 69,
+            "Ranged": 69,
+            "Magic": 69
+          },
+          "equipmentStats": [
+            {
+              "key": "attackSpeed",
+              "value": 3600
+            }
+          ],
+          "ignoreCompletion": true,
+          "attackType": "magic",
+          "specialAttacks": [],
+          "passives": [],
+          "lootChance": 100,
+          "lootTable": [
+            {
+              "itemID": "melvorD:Mastery_Token_Farming",
+              "minQuantity": 5,
+              "maxQuantity": 10,
+              "weight": 36
+            },
+            {
+              "itemID": "melvorD:Mastery_Token_Firemaking",
+              "minQuantity": 5,
+              "maxQuantity": 10,
+              "weight": 18
+            },
+            {
+              "itemID": "melvorD:Mastery_Token_Woodcutting",
+              "minQuantity": 5,
+              "maxQuantity": 10,
+              "weight": 18
+            },
+            {
+              "itemID": "melvorD:Mastery_Token_Fishing",
+              "minQuantity": 5,
+              "maxQuantity": 10,
+              "weight": 37
+            },
+            {
+              "itemID": "melvorD:Mastery_Token_Mining",
+              "minQuantity": 5,
+              "maxQuantity": 10,
+              "weight": 21
+            }
+          ],
+          "gpDrops": {
+            "min": 50,
+            "max": 200
+          },
+          "canSlayer": true,
+          "isBoss": false,
+          "selectedSpell": "melvorD:FireBlast",
+          "bones": {
+            "itemID": "melvorD:Magic_Bones",
+            "quantity": 1
+          }
+        },
+        {
+          "id": "hemogolbin",
+          "name": "Hemogolbin",
+          "media": "assets/monsters/Hemogolbin.svg",
+          "levels": {
+            "Hitpoints": 200,
+            "Attack": 69,
+            "Strength": 69,
+            "Defence": 69,
+            "Ranged": 69,
+            "Magic": 69
+          },
+          "equipmentStats": [
+            {
+              "key": "attackSpeed",
+              "value": 3600
+            }
+          ],
+          "ignoreCompletion": true,
+          "attackType": "magic",
+          "specialAttacks": [],
+          "passives": [],
+          "lootChance": 100,
+          "lootTable": [
+            {
+              "itemID": "conquest_gamemodes:bloody_shard",
+              "minQuantity": 10,
+              "maxQuantity": 25,
+              "weight": 50
+            }
+          ],
+          "gpDrops": {
+            "min": 50,
+            "max": 200
+          },
+          "canSlayer": false,
+          "isBoss": false,
+          "selectedSpell": "melvorD:FireBlast",
+          "bones": {
+            "itemID": "melvorD:Magic_Bones",
+            "quantity": 1
+          }
+        },
+        {
+          "id": "repugnant_golbin",
+          "name": "Repugnant Hoarder",
+          "media": "assets/monsters/Repugnant_Golbin.svg",
+          "levels": {
+            "Hitpoints": 200,
+            "Attack": 69,
+            "Strength": 69,
+            "Defence": 69,
+            "Ranged": 69,
+            "Magic": 69
+          },
+          "equipmentStats": [
+            {
+              "key": "attackSpeed",
+              "value": 3600
+            }
+          ],
+          "ignoreCompletion": true,
+          "attackType": "magic",
+          "specialAttacks": [],
+          "passives": [],
+          "lootChance": 100,
+          "lootTable": [
+            {
+              "itemID": "melvorF:Stardust",
+              "minQuantity": 5,
+              "maxQuantity": 10,
+              "weight": 60
+            },
+            {
+              "itemID": "melvorF:Golden_Stardust",
+              "minQuantity": 1,
+              "maxQuantity": 2,
+              "weight": 20
+            },
+            {
+              "itemID": "melvorTotH:Corundumite_Ore",
+              "minQuantity": 2,
+              "maxQuantity": 4,
+              "weight": 10
+            },
+            {
+              "itemID": "melvorTotH:Augite_Ore",
+              "minQuantity": 2,
+              "maxQuantity": 4,
+              "weight": 7
+            },
+            {
+              "itemID": "melvorTotH:Divinite_Ore",
+              "minQuantity": 1,
+              "maxQuantity": 2,
+              "weight": 3
+            }
+          ],
+          "gpDrops": {
+            "min": 50,
+            "max": 200
+          },
+          "canSlayer": false,
+          "isBoss": false,
+          "selectedSpell": "melvorD:FireBlast",
+          "bones": {
+            "itemID": "melvorD:Magic_Bones",
+            "quantity": 1
+          }
+        },
+        {
+          "id": "mucilaginous_lord",
+          "name": "Mucilaginous Lord",
+          "media": "assets/monsters/Mucilaginous_Lord.svg",
+          "levels": {
+            "Hitpoints": 200,
+            "Attack": 69,
+            "Strength": 69,
+            "Defence": 69,
+            "Ranged": 69,
+            "Magic": 69
+          },
+          "equipmentStats": [
+            {
+              "key": "attackSpeed",
+              "value": 3600
+            }
+          ],
+          "ignoreCompletion": true,
+          "attackType": "magic",
+          "specialAttacks": [],
+          "passives": [],
+          "lootChance": 100,
+          "lootTable": [
+            { "itemID": "melvorD:Raw_Poison_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 256 },
+            { "itemID": "melvorD:Leaping_Trout", "minQuantity": 5, "maxQuantity": 10, "weight": 128 },
+            { "itemID": "melvorD:Leaping_Salmon", "minQuantity": 5, "maxQuantity": 10, "weight": 128 },
+            { "itemID": "melvorD:Leaping_Broad_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 128 },
+            { "itemID": "melvorD:Raw_Seahorse", "minQuantity": 5, "maxQuantity": 10, "weight": 64 },
+            { "itemID": "melvorTotH:Raw_Lava_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 32 },
+            { "itemID": "melvorTotH:Raw_Spike_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 32 },
+            { "itemID": "melvorTotH:Raw_Rockfish", "minQuantity": 5, "maxQuantity": 10, "weight": 16 },
+            { "itemID": "melvorTotH:Raw_Magma_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 16 },
+            { "itemID": "melvorTotH:Raw_Large_Blowfish", "minQuantity": 5, "maxQuantity": 10, "weight": 8 },
+            { "itemID": "melvorTotH:Raw_Static_Jellyfish", "minQuantity": 5, "maxQuantity": 10, "weight": 4 },
+            { "itemID": "melvorTotH:Raw_Frozen_Manta_Ray", "minQuantity": 5, "maxQuantity": 10, "weight": 4 },
+            { "itemID": "melvorTotH:Raw_Ghost_Fish", "minQuantity": 5, "maxQuantity": 10, "weight": 2 },
+            { "itemID": "melvorTotH:Raw_Mystic_Seahorse", "minQuantity": 5, "maxQuantity": 10, "weight": 2 },
+            { "itemID": "melvorTotH:Raw_Terrorfish", "minQuantity": 5, "maxQuantity": 10, "weight": 1 },
+            { "itemID": "melvorTotH:Raw_Mystic_Shark", "minQuantity": 5, "maxQuantity": 10, "weight": 1 }
+          ],
+          "gpDrops": {
+            "min": 50,
+            "max": 200
+          },
+          "canSlayer": false,
+          "isBoss": false,
+          "selectedSpell": "melvorD:FireBlast",
+          "bones": {
+            "itemID": "melvorD:Magic_Bones",
+            "quantity": 1
+          }
+        },
+        {
+          "id": "crystal_golbin",
+          "name": "Crystal Golbin",
+          "media": "assets/monsters/Crystal_Golbin.svg",
+          "levels": {
+            "Hitpoints": 200,
+            "Attack": 69,
+            "Strength": 69,
+            "Defence": 69,
+            "Ranged": 69,
+            "Magic": 69
+          },
+          "equipmentStats": [
+            {
+              "key": "attackSpeed",
+              "value": 3600
+            }
+          ],
+          "ignoreCompletion": true,
+          "attackType": "magic",
+          "specialAttacks": [],
+          "passives": [],
+          "lootChance": 100,
+          "lootTable": [
+            { "itemID": "melvorD:Topaz", "minQuantity": 5, "maxQuantity": 10, "weight": 500 },
+            { "itemID": "melvorD:Sapphire", "minQuantity": 5, "maxQuantity": 10, "weight": 175 },
+            { "itemID": "melvorD:Ruby", "minQuantity": 5, "maxQuantity": 10, "weight": 175 },
+            { "itemID": "melvorD:Emerald", "minQuantity": 5, "maxQuantity": 10, "weight": 100 },
+            { "itemID": "melvorD:Diamond", "minQuantity": 5, "maxQuantity": 10, "weight": 50 },
+            { "itemID": "melvorF:Jadestone", "minQuantity": 5, "maxQuantity": 10, "weight": 1 }
+          ],
+          "gpDrops": {
+            "min": 50,
+            "max": 200
+          },
+          "canSlayer": false,
+          "isBoss": false,
+          "selectedSpell": "melvorD:FireBlast",
+          "bones": {
+            "itemID": "melvorD:Magic_Bones",
+            "quantity": 1
+          }
+        },
+        {
+          "id": "greedy_golbin",
+          "name": "Greedy Golbin",
+          "media": "assets/monsters/Greedy_Golbin.svg",
+          "levels": {
+            "Hitpoints": 200,
+            "Attack": 69,
+            "Strength": 69,
+            "Defence": 69,
+            "Ranged": 69,
+            "Magic": 69
+          },
+          "equipmentStats": [
+            {
+              "key": "attackSpeed",
+              "value": 3600
+            }
+          ],
+          "ignoreCompletion": true,
+          "attackType": "magic",
+          "specialAttacks": [],
+          "passives": [],
+          "lootChance": 0,
+          "lootTable": [],
+          "gpDrops": {
+            "min": 500,
+            "max": 2000
+          },
+          "canSlayer": false,
+          "isBoss": false,
+          "selectedSpell": "melvorD:FireBlast",
+          "bones": {
+            "itemID": "melvorD:Magic_Bones",
+            "quantity": 1
+          }
+        }
+      ],
+      "combatAreas": [
+        {
+          "id": "whimsyshire",
+          "name": "Whimsyshire",
+          "media": "assets/locations/Whimsyshire.png",
+          "monsterIDs": [
+            "conquest_gamemodes:treasured_golbin",
+            "conquest_gamemodes:hemogolbin",
+            "conquest_gamemodes:repugnant_golbin",
+            "conquest_gamemodes:mucilaginous_lord",
+            "conquest_gamemodes:crystal_golbin",
+            "conquest_gamemodes:greedy_golbin"
+          ],
+          "difficulty": [3],
+          "entryRequirements": [
+            {
+              "type": "ItemFound",
+              "itemID": "conquest_gamemodes:staff_of_herding"
+            }
+          ],
+          "areaEffectDescription": "-${effectValue}% Damage Reduction",
+          "areaEffect": {
+            "target": "Player",
+            "modifier": "decreasedDamageReduction",
+            "magnitude": 25
+          }
+        }
+      ],
+      "combatAreaDisplayOrder": [
+        {
+          "insertAt": "After",
+          "afterID": "melvorD:ElerineBattlegrounds",
+          "ids": ["conquest_gamemodes:whimsyshire"]
+        }
+      ]
+    }
+  }
+  
