@@ -48,6 +48,7 @@ export async function setup(ctx) {
       game.combat.player.summonAttackInterval = 500;
 
       setForbiddenSkillLevels();
+      game.postDataRegistration();
     } else {
       console.log("Not in Conquest Mode.");
     }
@@ -68,6 +69,17 @@ export async function setup(ctx) {
     modifyMonsterDrops();
     modifyPickpocketTables();
     modifyOpenableItemTables();
+
+    //Custom Combat areas, thanks @Zxv
+    areaMenus.combat.areas.forEach((area, id) => {
+      if (
+        areaMenus.combat.menuElems.get(area) === undefined &&
+        area instanceof CombatArea &&
+        area.localID !== "UnknownArea"
+      ) {
+        areaMenus.combat.createMenuElement(area, id);
+      }
+    });
   });
 
   let dataBankRegistered = false;
@@ -81,11 +93,11 @@ export async function setup(ctx) {
 
       console.warn("Loading data packages");
       game.registerDataPackage(itemsJSON);
-      game.registerDataPackage(monstersJSON)
+      game.registerDataPackage(monstersJSON);
       dataBankRegistered = true;
     }
   });
-  
+
   /****************************************************/
   //CONQUEST MODE PATCHES
   /****************************************************/
