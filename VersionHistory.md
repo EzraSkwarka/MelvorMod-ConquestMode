@@ -1,3 +1,7 @@
+V1.0.1
+- Quarantined Mod content
+- Added better assets for bloody shard chain
+
 V1.0.0
 - All Items should now be obtainable
 - Added A Secret
