@@ -1,3 +1,9 @@
+V1.0.2
+- Fixed gamemode button
+- Buffed Linden log drop rate from Raven Nests
+- Added Linden Log drops to Repugnant Golbin
+- Filtered Items from Shop
+
 V1.0.1
 - Quarantined Mod content
 - Added better assets for bloody shard chain

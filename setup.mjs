@@ -62,6 +62,7 @@ export async function setup(ctx) {
     patchIntervalCaps();
     patchSlayer();
     patchLuckyHerbTable();
+    shopPatches();
 
     //Other patches
     toggleLockedSkills();
@@ -437,6 +438,50 @@ const petCheck = (enemyID) => {
   if (petID != false) game.petManager.unlockPetByID(petID);
 };
 
+//Modify Shop
+const shopPatches = () => {
+  // let test = game.shop.purchases.getObjectByID("melvorD:Strong_Furnace").purchaseRequirements
+  // console.log(test)
+  // game.shop.purchases.getObjectByID("melvorD:Strong_Furnace").purchaseRequirements = [
+  //   { type: "SkillLevel", skillID: "melvorD:Attack", level: 120 },
+  // ];
+
+  //Banned Items
+  let bannedItems = [
+    "melvorD:Multi_Tree",
+    "melvorD:Iron_Axe",
+    "melvorD:Iron_Fishing_Rod",
+    "melvorD:Iron_Pickaxe",
+    "melvorD:Basic_Furnace",
+    "melvorD:Strong_Furnace",
+    "melvorF:Extra_Equipment_Set_III", //Astrology Equipment Set
+    "melvorF:Master_of_Nature",
+    "melvorTotH:SignOfTheStars",
+    "melvorD:Farming_Skillcape",
+    "melvorD:Firemaking_Skillcape",
+    "melvorD:Fishing_Skillcape",
+    "melvorD:Mining_Skillcape",
+    "melvorD:Woodcutting_Skillcape",
+    "melvorF:Astrology_Skillcape",
+    "melvorTotH:Superior_Astrology_Skillcape",
+    "melvorTotH:Superior_Farming_Skillcape",
+    "melvorTotH:Superior_Firemaking_Skillcape",
+    "melvorTotH:Superior_Fishing_Skillcape",
+    "melvorTotH:Superior_Mining_Skillcape",
+    "melvorTotH:Superior_Woodcutting_Skillcape",
+    "melvorF:Warm_Beanie", //Added to Bloody Chest
+    "melvorF:Pirate_Captain_Hat", //Added to Bloody Chest
+  ];
+  shopMenu.tabs.forEach((tab) =>
+    tab.menu.items.forEach((tabItem) => {
+      if (bannedItems.includes(tabItem.item.purchase.id)) tabItem.container.classList.add("d-none");
+    })
+  );
+
+  // game.updatePurchaseRequirements();
+  //updatePurchaseRequirements()
+};
+
 //Modify Drops
 const modifyOpenableItemTables = () => {
   addDropToOpenableItemTable("melvorF:Fire_Chest", ["melvorD:Generous_Fire_Spirit", 2, 3, 10]);
@@ -450,7 +495,7 @@ const modifyOpenableItemTables = () => {
   addDropToOpenableItemTable("melvorD:Treasure_Chest", ["melvorD:Raw_Magic_Fish", 1, 3, 3]);
 
   addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Hornbeam_Logs", 1, 3, 3]);
-  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Linden_Logs", 1, 3, 3]);
+  addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Linden_Logs", 10, 25, 10]);
   addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Red_Oak_Logs", 1, 3, 3]);
   addDropToOpenableItemTable("melvorTotH:Raven_Nest", ["melvorTotH:Mystic_Logs", 1, 3, 3]);
 
