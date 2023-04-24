@@ -446,9 +446,7 @@ const petCheck = (enemyID) => {
 const shopPatches = () => {
   // let test = game.shop.purchases.getObjectByID("melvorD:Strong_Furnace").purchaseRequirements
   // console.log(test)
-  // game.shop.purchases.getObjectByID("melvorD:Strong_Furnace").purchaseRequirements = [
-  //   { type: "SkillLevel", skillID: "melvorD:Attack", level: 120 },
-  // ];
+  game.shop.purchases.getObjectByID("melvorD:Basic_Furnace").purchaseRequirements = []; //Does not indicate but it does work for now
 
   //Banned Items
   let bannedItems = [
@@ -456,7 +454,6 @@ const shopPatches = () => {
     "melvorD:Iron_Axe",
     "melvorD:Iron_Fishing_Rod",
     "melvorD:Iron_Pickaxe",
-    "melvorD:Basic_Furnace",
     "melvorD:Strong_Furnace",
     "melvorF:Extra_Equipment_Set_III", //Astrology Equipment Set
     "melvorF:Master_of_Nature",
