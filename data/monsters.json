@@ -62,7 +62,7 @@
           "min": 50,
           "max": 200
         },
-        "canSlayer": true,
+        "canSlayer": false,
         "isBoss": false,
         "selectedSpell": "melvorD:FireBlast",
         "bones": {
