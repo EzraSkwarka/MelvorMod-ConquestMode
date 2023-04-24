@@ -183,7 +183,11 @@ export async function setup(ctx) {
     let tracker = 0;
     game.dungeons.forEach((dungeon) => {
       let beatCount = game.combat.getDungeonCompleteCount(game.dungeons.getObjectByID(dungeon.id));
-      if (beatCount >= 10) {
+      if (beatCount >= 100) {
+        tracker += 10;
+      } else if (beatCount >= 25) {
+        tracker += 5;
+      } else if (beatCount >= 10) {
         tracker += 3;
       } else if (beatCount >= 3) {
         tracker += 2;

@@ -3,6 +3,7 @@ V1.0.2
 - Buffed Linden log drop rate from Raven Nests
 - Added Linden Log drops to Repugnant Golbin
 - Filtered Items from Shop
+- Added two extra bank slots at 25 clears, and 5 more at 100 for the really devoted
 
 V1.0.1
 - Quarantined Mod content
