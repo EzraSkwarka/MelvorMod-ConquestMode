@@ -118,76 +118,88 @@
               "itemID": "melvorF:Ash",
               "minQuantity": 1,
               "maxQuantity": 10,
-              "weight": 100
+              "weight": 200
             },
             {
               "itemID": "melvorD:Farming_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 10
+              "weight": 20
             },
             {
               "itemID": "melvorD:Firemaking_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 10
+              "weight": 20
             },
             {
               "itemID": "melvorD:Fishing_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 10
+              "weight": 20
             },
             {
               "itemID": "melvorD:Mining_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 10
+              "weight": 20
             },
             {
               "itemID": "melvorD:Woodcutting_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 10
+              "weight": 20
             },
             {
               "itemID": "melvorF:Astrology_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 10
+              "weight": 20
             },
             {
               "itemID": "melvorTotH:Superior_Astrology_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 10
+              "weight": 20
             },
             {
               "itemID": "melvorTotH:Superior_Farming_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 1
+              "weight": 2
             },
             {
               "itemID": "melvorTotH:Superior_Firemaking_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 1
+              "weight": 2
             },
             {
               "itemID": "melvorTotH:Superior_Fishing_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 1
+              "weight": 2
             },
             {
               "itemID": "melvorTotH:Superior_Mining_Skillcape",
               "minQuantity": 1,
               "maxQuantity": 1,
-              "weight": 1
+              "weight": 2
             },
             {
               "itemID": "melvorTotH:Superior_Woodcutting_Skillcape",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 2
+            },
+            {
+              "itemID": "melvorF:Warm_Beanie",
+              "minQuantity": 1,
+              "maxQuantity": 1,
+              "weight": 1
+            },
+            {
+              "itemID": "melvorF:Pirate_Captain_Hat",
               "minQuantity": 1,
               "maxQuantity": 1,
               "weight": 1

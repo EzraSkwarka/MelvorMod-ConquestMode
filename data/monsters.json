@@ -62,7 +62,7 @@
           "min": 50,
           "max": 200
         },
-        "canSlayer": true,
+        "canSlayer": false,
         "isBoss": false,
         "selectedSpell": "melvorD:FireBlast",
         "bones": {
@@ -151,6 +151,11 @@
           },
           {
             "itemID": "melvorTotH:Corundumite_Ore",
+            "minQuantity": 2,
+            "maxQuantity": 4,
+            "weight": 10
+          },{
+            "itemID": "melvorTotH:Linden_Logs",
             "minQuantity": 2,
             "maxQuantity": 4,
             "weight": 10

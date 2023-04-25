@@ -14,7 +14,7 @@
           "5x Gold from Combat, 3x Slayer Coins"
         ],
         "textClass": "text-warning",
-        "btnClass": "btn-gamemode-normal",
+        "btnClass": "btn-gamemode-standard",
         "isPermaDeath": false,
         "isEvent": false,
         "endDate": 0,

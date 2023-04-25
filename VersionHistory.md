@@ -1,3 +1,12 @@
+V1.0.2
+- Fixed gamemode button
+- Buffed Linden log drop rate from Raven Nests
+- Added Linden Log drops to Repugnant Golbin
+- Filtered Items from Shop
+- Added two extra bank slots at 25 clears, and 5 more at 100 for the really devoted
+- Removed Skill requirement from "melvorD:Basic_Furnace"
+ - This allows you to buy the first in the chain, on subsequent reloads it will hide other members in the chain
+
 V1.0.1
 - Quarantined Mod content
 - Added better assets for bloody shard chain

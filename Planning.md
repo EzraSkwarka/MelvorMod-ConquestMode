@@ -3,20 +3,21 @@
 # ############################################
 - Find list of items not available to CO + skills i'm allowing
  - Tentatively done?
-- Make forbidden skill skill-capes purchase-able or otherwise obtainable
 - Adjust mark drop chance logic to be more in line with the vanilla rates
   - Also add the "Can't find more till you make one" logic
 - Dynamically load data files so added items and enemies don't break containment
 - Apply Interval reduction to dot Effects
   - Not sure if this is possible tbh
   - Looks like I'd have to modify every weapon's special attack feature
-- Hemogolbin bloody shard sprites
-- Better sprit for Staff of Herding
+- Better sprite for Staff of Herding
 
 # ############################################
 # Done:
 # ############################################
 
+- Make forbidden skill skill-capes purchase-able or otherwise obtainable
+ - Hemogolbin shards
+- Hemogolbin bloody shard sprites
 - Find a way to award mastery tokens for forbidden skills
   - Can drop from the Treasured Golbin (wandering Normal slayer task); V0.9.7
 - Move theiving and summoning behind Volc Cave
