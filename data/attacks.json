@@ -1,0 +1,471 @@
+{
+    "$schema": "https://melvoridle.com/assets/schema/gameData.json",
+    "namespace": "conquest_gamemodes",
+    "data": {
+        "attacks": [
+            {
+                "id": "cm_SunsetStab",
+                "defaultChance": 15,
+                "damage": [
+                    {
+                        "damageType": "Normal",
+                        "amplitude": 100
+                    }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [
+                    {
+                        "effectType": "Custom",
+                        "type": "DOT",
+                        "subtype": "Bleed",
+                        "damage": [
+                            {
+                                "character": "Attacker",
+                                "maxRoll": "DamageDealt",
+                                "maxPercent": 200,
+                                "roll": false
+                            }
+                        ],
+                        "procs": 20,
+                        "interval": 150,
+                        "chance": 100
+                    }
+                ],
+                "cantMiss": false,
+                "attackCount": 1,
+                "attackInterval": 50,
+                "lifesteal": 0,
+                "name": "[CM] Sunset Stab",
+                "description": "On a hit inflicts Bleed that deals ${onHitEffect0DamageMaxValue0}% of the damage dealt as damage over ${onHitEffect0duration}s.",
+                "descriptionGenerator": "On a hit <hitEffect>.",
+                "usesRunesPerProc": false
+            },
+            {
+                "id": "cm_DeadlyCut",
+                "defaultChance": 100,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 100
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [
+                  {
+                    "effectType": "Custom",
+                    "type": "DOT",
+                    "subtype": "Bleed",
+                    "damage": [
+                      {
+                        "character": "Target",
+                        "roll": false,
+                        "maxRoll": "Fixed",
+                        "maxPercent": 20
+                      },
+                      {
+                        "character": "Target",
+                        "roll": false,
+                        "maxRoll": "MaxHP",
+                        "maxPercent": 4
+                      }
+                    ],
+                    "procs": 20,
+                    "interval": 150,
+                    "chance": 100
+                  }
+                ],
+                "cantMiss": false,
+                "attackCount": 1,
+                "attackInterval": 50,
+                "lifesteal": 0,
+                "name": "Deadly Cut",
+                "description": "Perform a normal attack. On a hit, inflicts Bleed that deals ${onHitEffect0DamageMaxValue0} and ${onHitEffect0DamageMaxValue1}% of the enemy's max hitpoints as damage over ${onHitEffect0duration}s.",
+                "descriptionGenerator": "Perform a normal attack. On a hit, <hitEffect>.",
+                "usesRunesPerProc": false
+              },
+              {
+                "id": "cm_DoubleEdged",
+                "defaultChance": 50,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 75,
+                    "attackCount": 0
+                  },
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 150,
+                    "attackCount": 1
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [],
+                "cantMiss": false,
+                "attackCount": 2,
+                "attackInterval": 90,
+                "lifesteal": 0,
+                "name": "[CM] Double Edged",
+                "description": "Attack ${hitCount} times dealing ${attackDamageMaxValue0}% of your normal damage on the 1st attack and ${attackDamageMaxValue1}% of your normal damage on the 2nd attack.",
+                "descriptionGenerator": "Attack <count> times dealing <damage>."
+              },
+              {
+                "id": "cm_DoubleSwipe",
+                "defaultChance": 15,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 100
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [],
+                "cantMiss": false,
+                "attackCount": 2,
+                "attackInterval": 90,
+                "lifesteal": 0,
+                "name": "[CM] Double Swipe",
+                "description": "Perform ${hitCount} consecutive attacks.",
+                "descriptionGenerator": "Perform <count> consecutive attacks.",
+                "usesRunesPerProc": false
+              },
+              {
+                "id": "cm_TripleSwipe",
+                "defaultChance": 15,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 100
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [],
+                "cantMiss": false,
+                "attackCount": 3,
+                "attackInterval": 90,
+                "lifesteal": 0,
+                "name": "[CM] Triple Swipe",
+                "description": "Perform ${hitCount} consecutive attacks.",
+                "descriptionGenerator": "Perform <count> consecutive attacks.",
+                "usesRunesPerProc": false
+              },
+              {
+                "id": "cm_QuadSwipe",
+                "defaultChance": 15,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 100
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [],
+                "cantMiss": false,
+                "attackCount": 4,
+                "attackInterval": 90,
+                "lifesteal": 0,
+                "name": "[CM] Quad Swipe",
+                "description": "Perform ${hitCount} consecutive attacks.",
+                "descriptionGenerator": "Perform <count> consecutive attacks.",
+                "usesRunesPerProc": false
+              },
+              {
+                "id": "cm_DualAttack",
+                "defaultChance": 100,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 75
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [],
+                "cantMiss": false,
+                "attackCount": 2,
+                "attackInterval": 60,
+                "lifesteal": 0,
+                "name": "[CM] Dual Attack",
+                "description": "Always perform ${hitCount} consecutive attacks that deal ${attackDamageMaxValue0}% of your normal damage.",
+                "descriptionGenerator": "Always perform <count> consecutive attacks that deal <damage>.",
+                "usesRunesPerProc": false
+              },
+              {
+                "id": "cm_FreezeRay",
+                "defaultChance": 100,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 70
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [
+                  {
+                    "effectType": "Slow",
+                    "magnitude": 15,
+                    "turns": 2
+                  }
+                ],
+                "cantMiss": false,
+                "attackCount": 5,
+                "attackInterval": 120,
+                "lifesteal": 0,
+                "name": "[CM] Magic Ray",
+                "description": "Converts your selected Standard Magic Spell into a Magic Ray, dealing ${attackDamageMaxValue0}% of your normal damage ${hitCount} times over ${duration}s. On a hit, gives the enemy +${onHitEffect0modValue0}% Attack Interval for ${onHitEffect0turns} of the enemy's turns. Consumes Runes per hit.",
+                "descriptionGenerator": "Converts your selected Standard Magic Spell into a Magic Ray, dealing <damage> <count> times over <duration>. On a hit, <hitEffect>. Consumes Runes per hit.",
+                "usesRunesPerProc": true
+              },
+              {
+                "id": "cm_PoisonedHit",
+                "defaultChance": 100,
+                "damage": [
+                  {
+                    "damageType": "Custom",
+                    "character": "Attacker",
+                    "maxRoll": "PoisonMax35",
+                    "maxPercent": 90,
+                    "minRoll": "PoisonMin35",
+                    "minPercent": 90,
+                    "roll": true
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [
+                  {
+                    "effectType": "Poison",
+                    "chance": 20
+                  }
+                ],
+                "cantMiss": false,
+                "attackCount": 1,
+                "attackInterval": 50,
+                "lifesteal": 0,
+                "name": "[CM] Poisoned Hit",
+                "description": "Perform an attack that deals ${attackDamageMaxValue0}% (125% if the enemy is poisoned) of your normal damage. On a hit has a ${onHitEffect0chance}% chance to inflict Poison that deals ${onHitEffect0DamageMaxValue0}% of the enemy's max hitpoints as damage over ${onHitEffect0duration}s.",
+                "descriptionGenerator": "Perform an attack that deals <damage>. On a hit <hitEffect>."
+              },
+              {
+                "id": "cm_Rend",
+                "defaultChance": 30,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 100
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [
+                  {
+                    "effectType": "Custom",
+                    "type": "DOT",
+                    "subtype": "Bleed",
+                    "damage": [
+                      {
+                        "character": "Attacker",
+                        "maxRoll": "Rend",
+                        "maxPercent": 400,
+                        "roll": false
+                      }
+                    ],
+                    "procs": 20,
+                    "interval": 150,
+                    "chance": 100
+                  },
+                  {
+                    "effectType": "Custom",
+                    "type": "Modifier",
+                    "modifiers": {
+                      "increasedMaxHitPercent": 20,
+                      "decreasedAttackIntervalPercent": 20,
+                      "increasedGlobalAccuracy": 20
+                    },
+                    "maxStacks": 1,
+                    "stacksToAdd": 1,
+                    "character": "Attacker",
+                    "turns": 2,
+                    "countsOn": "Attacker",
+                    "media": "melvor:assets/media/status/speedup.svg"
+                  }
+                ],
+                "cantMiss": false,
+                "attackCount": 1,
+                "attackInterval": 50,
+                "lifesteal": 0,
+                "name": "[CM] Rend",
+                "description": "Perform a normal attack. On a hit, inflicts Bleed that deals ${onHitEffect0DamageMaxValue0}% if the target has full Hitpoints, otherwise 250%, of the damage dealt as damage over ${onHitEffect0duration}s. Also while the Target is Bleeding, Attacker gains +20% Max Hit, -20% Attack Interval and +20% Global Accuracy.",
+                "descriptionGenerator": "Perform a normal attack. On a hit, <hitEffect>.",
+                "usesRunesPerProc": false
+              },
+              {
+                "id": "cm_Sandstorm",
+                "defaultChance": 15,
+                "damage": [
+                  {
+                    "damageType": "Custom",
+                    "character": "Attacker",
+                    "maxRoll": "CurrentHP",
+                    "maxPercent": 15,
+                    "minRoll": "CurrentHP",
+                    "minPercent": 1,
+                    "roll": true
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [],
+                "cantMiss": true,
+                "attackCount": 10,
+                "attackInterval": 120,
+                "lifesteal": 0,
+                "name": "[CM] Sandstorm",
+                "description": "(MELEE ONLY) An unavoidable attack that deals ${attackDamageMinValue0}%-${attackDamageMaxValue0}% of your current hitpoints as damage ${hitCount} times over ${duration}s.",
+                "descriptionGenerator": "(MELEE ONLY) An <avoidable> attack that deals <damage> as damage <count> times over <duration>.",
+                "attackTypes": [
+                  "melee"
+                ],
+                "usesRunesPerProc": false,
+                "usesPrayerPointsPerProc": false,
+                "usesPotionChargesPerProc": false
+              },
+              {
+                "id": "cm_SwiftAttack",
+                "defaultChance": 50,
+                "damage": [
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 65,
+                    "attackCount": 0
+                  },
+                  {
+                    "damageType": "Normal",
+                    "amplitude": 85,
+                    "attackCount": 1
+                  }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [
+                  {
+                    "effectType": "Custom",
+                    "type": "Modifier",
+                    "modifiers": {
+                      "increasedGlobalEvasion": 15
+                    },
+                    "maxStacks": 1,
+                    "stacksToAdd": 1,
+                    "character": "Attacker",
+                    "turns": 2,
+                    "countsOn": "Attacker",
+                    "media": "melvor:assets/media/status/evasion_increase.svg"
+                  }
+                ],
+                "cantMiss": false,
+                "attackCount": 2,
+                "attackInterval": 60,
+                "lifesteal": 0,
+                "name": "[CM] Swift Attack",
+                "description": "Keeping your distance, you attack ${hitCount} times dealing ${attackDamageMaxValue0}% of your normal damage on the 1st attack and ${attackDamageMaxValue1}% of your normal damage on the 2nd attack. On a hit, gives you +${onHitEffect0modValue0}% Global Evasion for ${onHitEffect0turns} of your turns.",
+                "descriptionGenerator": "Keeping your distance, you attack <count> times dealing <damage>. On a hit, <hitEffect>."
+              }
+        ]
+    },
+    "modifications": {
+        "items": [
+            {
+                "id": "melvorD:Sunset_Rapier",
+                "specialAttacks": {
+                    "remove": ["melvorD:SunsetStab"],
+                    "add": ["conquest_gamemodes:cm_SunsetStab"]
+                }
+            },
+            {
+                "id": "melvorF:Darksteel_Dagger",
+                "specialAttacks": {
+                    "remove": ["melvorF:DeadlyCut"],
+                    "add": ["conquest_gamemodes:cm_DeadlyCut"]
+                }
+            },
+            {
+                "id": "melvorF:Darksteel_Dagger",
+                "specialAttacks": {
+                    "remove": ["melvorF:DeadlyCut"],
+                    "add": ["conquest_gamemodes:cm_DeadlyCut"]
+                }
+            },
+            {
+                "id": "melvorF:War_Axe",
+                "specialAttacks": {
+                    "remove": ["melvorF:DoubleEdged"],
+                    "add": ["conquest_gamemodes:cm_DoubleEdged"]
+                }
+            },
+            {
+                "id": "melvorF:Dragon_Claw",
+                "specialAttacks": {
+                    "remove": ["melvorF:DoubleSwipe"],
+                    "add": ["conquest_gamemodes:cm_DoubleSwipe"]
+                }
+            },
+            {
+                "id": "melvorF:Twin_Exiles",
+                "specialAttacks": {
+                    "remove": ["melvorF:DualAttack"],
+                    "add": ["conquest_gamemodes:cm_DualAttack"]
+                }
+            },
+            {
+                "id": "melvorF:Cloudburst_Staff",
+                "specialAttacks": {
+                    "remove": ["melvorF:FreezeRay"],
+                    "add": ["conquest_gamemodes:cm_FreezeRay"]
+                }
+            },
+            {
+                "id": "melvorF:Poisoned_Dagger",
+                "specialAttacks": {
+                    "remove": ["melvorF:PoisonedHit"],
+                    "add": ["conquest_gamemodes:cm_PoisonedHit"]
+                }
+            },
+            {
+                "id": "melvorF:Poisoned_Shortbow",
+                "specialAttacks": {
+                    "remove": ["melvorF:PoisonedHit"],
+                    "add": ["conquest_gamemodes:cm_PoisonedHit"]
+                }
+            },
+            {
+                "id": "melvorF:Infernal_Claw",
+                "specialAttacks": {
+                    "remove": ["melvorF:QuadSwipe"],
+                    "add": ["conquest_gamemodes:cm_QuadSwipe"]
+                }
+            },
+            {
+                "id": "melvorF:Sanguine_Blade",
+                "specialAttacks": {
+                    "remove": ["melvorF:Rend"],
+                    "add": ["conquest_gamemodes:cm_Rend"]
+                }
+            },
+            {
+                "id": "melvorF:Sandstorm_Ring",
+                "specialAttacks": {
+                    "remove": ["melvorF:Sandstorm"],
+                    "add": ["conquest_gamemodes:cm_Sandstorm"]
+                }
+            },
+            {
+                "id": "melvorF:Warberd",
+                "specialAttacks": {
+                    "remove": ["melvorF:SwiftAttack"],
+                    "add": ["conquest_gamemodes:cm_SwiftAttack"]
+                }
+            },
+            {
+                "id": "melvorF:Ancient_Claw",
+                "specialAttacks": {
+                    "remove": ["melvorF:TripleSwipe"],
+                    "add": ["conquest_gamemodes:cm_TripleSwipe"]
+                }
+            }
+        ]
+    }
+}

@@ -5,16 +5,24 @@
  - Tentatively done?
 - Adjust mark drop chance logic to be more in line with the vanilla rates
   - Also add the "Can't find more till you make one" logic
-- Dynamically load data files so added items and enemies don't break containment
 - Apply Interval reduction to dot Effects
-  - Not sure if this is possible tbh
-  - Looks like I'd have to modify every weapon's special attack feature
+ - [ ] Base Game
+  - [X] Find list of applicable attacks:
+    - SunsetStab, DeadlyCut, DoubleEdged, DoubleSwipe, TrippleSwipe, QuadSwipe, DualAttack, FreezeRay (Cloudburt Staff), PoisonedHit (Buggy), Rend, Sandstorm, and SwiftAttack
+  - [X] Redifine them
+  - [X] Add new and remove old
+  - [ ] Test
+ - [ ] TOTH
+  - [ ] Find list of applicable attacks
+  - [ ] Redifine them
+  - [ ] Add new and remove old
 - Better sprite for Staff of Herding
 
 # ############################################
 # Done:
 # ############################################
 
+- Dynamically load data files so added items and enemies don't break containment
 - Make forbidden skill skill-capes purchase-able or otherwise obtainable
  - Hemogolbin shards
 - Hemogolbin bloody shard sprites

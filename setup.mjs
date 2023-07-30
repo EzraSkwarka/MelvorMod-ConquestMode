@@ -24,6 +24,7 @@ export async function setup(ctx) {
   //load Data
   const monstersJSON = await ctx.loadData("data/monsters.json");
   const itemsJSON = await ctx.loadData("data/items.json");
+  const weaponattacksJSON = await ctx.loadData("data/attacks.json");
 
   // Helper patch functions
   const conquestGamemodeCheck = (gamemode = game.currentGamemode) => {
@@ -93,6 +94,7 @@ export async function setup(ctx) {
 
       console.warn("Loading data packages");
       game.registerDataPackage(itemsJSON);
+      game.registerDataPackage(weaponattacksJSON);
       game.registerDataPackage(monstersJSON);
       dataBankRegistered = true;
     }
