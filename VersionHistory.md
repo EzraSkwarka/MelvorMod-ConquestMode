@@ -1,3 +1,8 @@
+V1.0.3
+- Added 70% interval reduction to the following special attacks:
+  - SunsetStab, DeadlyCut, DoubleEdged, DoubleSwipe, TrippleSwipe, QuadSwipe, DualAttack, FreezeRay (Cloudburt Staff), PoisonedHit (Buggy), Rend, Sandstorm, and SwiftAttack
+
+
 V1.0.2
 - Fixed gamemode button
 - Buffed Linden log drop rate from Raven Nests

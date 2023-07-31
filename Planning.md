@@ -6,12 +6,12 @@
 - Adjust mark drop chance logic to be more in line with the vanilla rates
   - Also add the "Can't find more till you make one" logic
 - Apply Interval reduction to dot Effects
- - [ ] Base Game
+ - [X] Base Game
   - [X] Find list of applicable attacks:
     - SunsetStab, DeadlyCut, DoubleEdged, DoubleSwipe, TrippleSwipe, QuadSwipe, DualAttack, FreezeRay (Cloudburt Staff), PoisonedHit (Buggy), Rend, Sandstorm, and SwiftAttack
   - [X] Redifine them
   - [X] Add new and remove old
-  - [ ] Test
+  - [X] Test
  - [ ] TOTH
   - [ ] Find list of applicable attacks
   - [ ] Redifine them
